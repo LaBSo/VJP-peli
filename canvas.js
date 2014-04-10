@@ -1,4 +1,4 @@
-var fps = 1;
+var fps = 24;
 var interval = 1000/fps;
 var delta;
 var k =0;
@@ -27,6 +27,8 @@ function animate(time) {
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	ctx.drawImage(auto, 69, 325);
+		//Testaus
+		sx = sx +15;
 		// Store the time when this tick was started
 		lastTime = time - (delta % interval);
 
