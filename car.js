@@ -1,11 +1,12 @@
 
-function car ={
-	this.speed;
+function car (src) {
+	this.speed = 0;
 	this.gear;
 	this.location;
 	this.kierrokset;
-}
-function accelerate{
+	this.src = src;
+
+function accelerate {
  /*
   * Kiihdyttäminen ja vaihteen vaihtaminen
   */
@@ -21,4 +22,5 @@ function brake {
 	/*
 	 * Hidastaminen
 	 */
+}
 }
