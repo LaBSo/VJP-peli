@@ -5,6 +5,9 @@ var k =0;
 var aniFrame;
 var elapsedTime;
 var lastTime = 0;
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var background = new Image();
 // Animation loop
 function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
