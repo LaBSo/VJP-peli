@@ -17,8 +17,31 @@ var sy=0;
 var audi = new Image();
 audi.src = "audi_profiili.png";
 auto = new car("audi_profiili.png");
+var rengas = new Image();
+rengas.src = "rengas.png";
 // TODO: poista kun toiminnallisuudet kunnossa
+var TO_RADIANS = Math.PI/180;
 
+function drawRotatedImage(image, x, y, angle) {
+
+	// save the current co-ordinate system
+	// before we screw with it
+	ctx.save();
+
+	// move to the middle of where we want to draw our image
+	ctx.translate(x, y);
+
+	// rotate around that point, converting our
+	// angle from degrees to radians
+	ctx.rotate(angle * TO_RADIANS);
+
+	// draw it up and to the left by half the width
+	// and height of the image
+	ctx.drawImage(image, -(image.width/2), -(image.height/2));
+
+	// and restore the co-ords to how they were when we began
+	ctx.restore();
+}
 
 
 
@@ -33,7 +56,14 @@ function animate(time) {
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	ctx.drawImage(audi, 69, 325);
+
+
+	drawRotatedImage(rengas, 69 +50, 325 +115,sx);
+	drawRotatedImage(rengas, 69 +205, 325 +115,sx);
+
 		sx = sx+auto.speed;
+	//TODO: renkaiden pyörimisnopeus
+
 
 		lastTime = time - (delta % interval);
 
