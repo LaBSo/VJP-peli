@@ -1,26 +1,36 @@
-
-function car (src) {
+function car(src) {
 	this.speed = 0;
 	this.gear;
 	this.location;
 	this.kierrokset;
 	this.src = src;
-
-function accelerate {
- /*
-  * Kiihdyttäminen ja vaihteen vaihtaminen
-  */
 }
 
-function changeGear {
+car.prototype.accelerate = function() {
 	/*
-	 * Vaihteen vaihtaminen
+	 * Kiihdyttäminen ja vaihteen vaihtaminen
 	 */
-}
+	if (this.speed < 45) {
+		this.speed = this.speed+1;
+	} else {
+		this.speed = 46;
+	}
+};
 
-function brake {
-	/*
-	 * Hidastaminen
-	 */
-}
-}
+//
+// function changeGear(side) {
+// /*
+// * Vaihteen vaihtaminen
+// */
+// }
+//
+// function brake {
+// /*
+// * Hidastaminen
+// */
+//}
+// function update {
+/*
+ * Hidastaminen
+ */
+
