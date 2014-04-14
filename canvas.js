@@ -103,6 +103,7 @@ function checkKeyDown(e) {
     }
     if (keyID === 37 || keyID === 65) { //left arrow or A key
         e.preventDefault();
+        auto.brake();
     }
 }
 

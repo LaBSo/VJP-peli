@@ -24,11 +24,16 @@ car.prototype.accelerate = function() {
 // */
 // }
 //
-// function brake {
-// /*
-// * Hidastaminen
-// */
-//}
+car.prototype.brake = function() {
+/*
+* Hidastaminen
+*/
+	if (this.speed > 0) {
+		this.speed = this.speed-1;
+	} else {
+		this.speed = 0;
+	}
+};
 // function update {
 /*
  * Hidastaminen
