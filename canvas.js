@@ -19,6 +19,7 @@ audi.src = "audi_profiili.png";
 auto = new car("audi_profiili.png");
 var rengas = new Image();
 rengas.src = "rengas.png";
+//var hill1 = new smallHill(50)
 // TODO: poista kun toiminnallisuudet kunnossa
 var TO_RADIANS = Math.PI/180;
 
