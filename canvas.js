@@ -45,15 +45,17 @@ function drawRotatedImage(image, x, y, angle) {
 	ctx.restore();
 }
 
-function isOnHighHill() {
+//funktiot piirretty kuvaan http://www.onlinefunctiongrapher.com/
+
+function isOnHighHill() { //sin(2x)
 	if((sx >= 200 && sx <= 400) || (sx >= 610 && sx <= 790)) return true else return false
 }
 
-function isOnBasicHill() {
+function isOnBasicHill() { //0.5sin()2x
 	if((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)) return true else return false
 }
 
-function isOnLongHill() {
+function isOnLongHill() { //0.5sinx
 	if((sx > 990 && sx < 1340) || (sx >= 1840 && sx <= 2190)) return true else return false
 }
 
