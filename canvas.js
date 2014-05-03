@@ -15,10 +15,10 @@ var sx=0;
 var sy=0;
 //Liitetään myöhemmin car luokkaan
 var audi = new Image();
-audi.src = "audi_profiili.png";
-auto = new car("audi_profiili.png");
+audi.src = "audiR8auto.png";
+auto = new car("audiR8auto.png");
 var rengas = new Image();
-rengas.src = "rengas.png";
+rengas.src = "audiR8pyora.png";
 //var hill1 = new smallHill(300)
 
 // TODO: poista kun toiminnallisuudet kunnossa
@@ -57,11 +57,13 @@ function animate(time) {
 	// Draw objects
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
-	ctx.drawImage(audi, 69, 325);
+	ctx.drawImage(audi, 5, 365);
+	//ctx.drawImage(audi, 69, 325);
 
-
-	drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-	drawRotatedImage(rengas, 69 +205, 325 +115,sx);
+    drawRotatedImage(rengas, 5 +16, 365 +23,sx);
+	drawRotatedImage(rengas, 5 +83, 365 +23,sx);
+	//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
+	//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
 
 		sx = sx+auto.speed;
 	//TODO: renkaiden pyörimisnopeus
