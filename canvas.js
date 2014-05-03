@@ -45,15 +45,24 @@ function drawRotatedImage(image, x, y, angle) {
 	ctx.restore();
 }
 
+function isOnHighHill() {
+	if((sx >= 200 && sx <= 400) || (sx >= 610 && sx <= 790)) return true else return false
+}
 
+function isOnBasicHill() {
+	if((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)) return true else return false
+}
+
+function isOnLongHill() {
+	if((sx > 990 && sx < 1340) || (sx >= 1840 && sx <= 2190)) return true else return false
+}
 
 // Animation loop
 function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
 	delta = time - lastTime;
-
-
-
+ 
+    
 	// Draw objects
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
@@ -75,7 +84,7 @@ function animate(time) {
 
 	}
 
-
+    
 
 
 	// Continue animation loop
