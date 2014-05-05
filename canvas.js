@@ -1,18 +1,18 @@
 var fps = 24;
-var interval = 1000 / fps;
+var interval = 1000/fps;
 var delta;
-var k = 0;
+var k =0;
 var aniFrame;
 var elapsedTime;
 var lastTime = 0;
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
 var background = new Image();
 background.src = 'taustaa.png';
 var gameHeight = c.height;
 var gameWidth = c.width;
-var sx = 0;
-var sy = 0;
+var sx=0;
+var sy=0;
 //Liitetään myöhemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
@@ -22,7 +22,7 @@ rengas.src = "audiR8pyora.png";
 //var hill1 = new smallHill(300)
 
 // TODO: poista kun toiminnallisuudet kunnossa
-var TO_RADIANS = Math.PI / 180;
+var TO_RADIANS = Math.PI/180;
 
 function drawRotatedImage(image, x, y, angle) {
 
@@ -39,7 +39,7 @@ function drawRotatedImage(image, x, y, angle) {
 
 	// draw it up and to the left by half the width
 	// and height of the image
-	ctx.drawImage(image, -(image.width / 2), -(image.height / 2));
+	ctx.drawImage(image, -(image.width/2), -(image.height/2));
 
 	// and restore the co-ords to how they were when we began
 	ctx.restore();
@@ -47,27 +47,27 @@ function drawRotatedImage(image, x, y, angle) {
 
 //funktiot piirretty kuvaan http://www.onlinefunctiongrapher.com/
 
-function isOnHighHill() {//sin(2x)
-	if ((sx >= 200 && sx <= 400) || (sx >= 610 && sx <= 790)) {
+function isOnHighHill() { //sin(2x)
+	if((sx >= 200 && sx <= 400) || (sx >= 610 && sx <= 790)){
 		return true
 	} else {
-		return false
+         return false
 	}
 }
 
-function isOnBasicHill() {//0.5sin()2x
-	if ((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)) {
+function isOnBasicHill() { //0.5sin()2x
+	if((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)){
 		return true
 	} else {
-		return false
+         return false
 	}
 }
 
-function isOnLongHill() {//0.5sinx
-	if ((sx > 990 && sx < 1340) || (sx >= 1840 && sx <= 2190)) {
+function isOnLongHill() { //0.5sinx
+	if((sx > 990 && sx < 1340) || (sx >= 1840 && sx <= 2190)) {
 		return true
 	} else {
-		return false
+         return false
 	}
 }
 
@@ -76,26 +76,30 @@ function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
 	delta = time - lastTime;
 
+
 	// Draw objects
 	if (delta > interval) {
-		ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		ctx.drawImage(audi, 5, 365);
-		//ctx.drawImage(audi, 69, 325);
-		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);
+	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
+	ctx.drawImage(audi, 5, 365);
+	//ctx.drawImage(audi, 69, 325);
 
-		drawRotatedImage(rengas, 5 + 16, 365 + 23, sx);
-		drawRotatedImage(rengas, 5 + 83, 365 + 23, sx);
-		//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-		//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
+    drawRotatedImage(rengas, 5 +16, 365 +23,sx);
+	drawRotatedImage(rengas, 5 +83, 365 +23,sx);
+	//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
+	//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
 
-		sx = sx + auto.speed;
-		//TODO: renkaiden pyörimisnopeus
+		sx = sx+auto.speed;
+	//TODO: renkaiden pyörimisnopeus
 
-		//hill1.draw();
+        //hill1.draw();
 		lastTime = time - (delta % interval);
 
+
+
 	}
+
+
+
 
 	// Continue animation loop
 	aniFrame = requestAnimationFrame(animate);
@@ -105,47 +109,46 @@ function animate(time) {
 $(document).ready(function() {
 
 	//TODO: EventListerner
-	document.addEventListener('keydown', checkKeyDown, false);
-	document.addEventListener('keyup', checkKeyUp, false);
+	document.addEventListener('keydown',checkKeyDown,false);
+    document.addEventListener('keyup',checkKeyUp,false);
 	// Start animation
 	if (requestAnimationFrame) {
 		aniFrame = requestAnimationFrame(animate);
 	}
 });
+
 function checkKeyDown(e) {
-	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
-		e.preventDefault();
-		auto.changeGear('up');
-	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
-		e.preventDefault();
+    var keyID = (e.keyCode) ? e.keyCode : e.which;
+    if (keyID === 38 || keyID === 87) { //up arrow or W key
+        e.preventDefault();
+    }
+    if (keyID === 39 || keyID === 68) { //right arrow or D key
+        e.preventDefault();
 		auto.accelerate();
 
-	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
-		e.preventDefault();
-		auto.changeGear('down');
-	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
-		e.preventDefault();
-		auto.brake();
-	}
+    }
+    if (keyID === 40 || keyID === 83) { //down arrow or S key
+        e.preventDefault();
+    }
+    if (keyID === 37 || keyID === 65) { //left arrow or A key
+        e.preventDefault();
+    }
 }
 
-function checkKeyUp(e) {
-	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
-		e.preventDefault();
-	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
-		e.preventDefault();
 
-	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
-		e.preventDefault();
-	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
-		e.preventDefault();
-	}
+function checkKeyUp(e) {
+    var keyID = (e.keyCode) ? e.keyCode : e.which;
+    if (keyID === 38 || keyID === 87) { //up arrow or W key
+        e.preventDefault();
+    }
+    if (keyID === 39 || keyID === 68) { //right arrow or D key
+        e.preventDefault();
+
+    }
+    if (keyID === 40 || keyID === 83) { //down arrow or S key
+        e.preventDefault();
+    }
+    if (keyID === 37 || keyID === 65) { //left arrow or A key
+        e.preventDefault();
+    }
 }
