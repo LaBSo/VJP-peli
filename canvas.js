@@ -88,6 +88,30 @@ function animate(time) {
 	//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
 	//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
 
+	/*ctx.strokeStyle = "#FF0000";
+
+	 for (var i = 50; i < 230; i++) {
+    	ctx.moveTo(i, 400);
+        ctx.lineTo(i, Math.sin(i*200-50)*100+400);
+    	ctx.stroke();
+    }*/
+
+      var cw = 400, xh = 400;
+  var ox = 350, oy = 360;
+  var t_min = 0, t_max = 2*Math.PI;
+  var scale = 80, step = 200, inc = t_max/step;
+
+ ctx.strokeStyle = "#FF0000";
+  ctx.beginPath();
+  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
+  for (var t=t_min; t<=t_max; t+=inc){
+    y = -scale*0.5 * Math.cos(t);
+    x = (t / t_max) * cw;
+    ctx.lineTo(ox+x, oy-y);
+  }
+  ctx.stroke();
+  ctx.closePath();
+
 		sx = sx+auto.speed;
 	//TODO: renkaiden pyörimisnopeus
 
