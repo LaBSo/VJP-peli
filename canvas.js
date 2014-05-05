@@ -56,7 +56,7 @@ function isOnHighHill() { //sin(2x)
 }
 
 function isOnBasicHill() { //0.5sin()2x
-	if((sx > 350 && sx < 750) || (sx >= 1500 && sx <= 1900))){
+	if((sx >= 350 && sx <= 750) || (sx >= 1500 && sx <= 1900)){
 		return true
 	} else {
          return false
@@ -83,10 +83,25 @@ function animate(time) {
 	ctx.drawImage(audi, 5, 365);
 	//ctx.drawImage(audi, 69, 325);
 
-    drawRotatedImage(rengas, 5 +16, 365 +23,sx);
-	drawRotatedImage(rengas, 5 +83, 365 +23,sx);
-	//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-	//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
+    if(isOnBasicHill){	
+    	var cw = 400, xh = 400;
+        var ox = 350, oy = 360;
+        var t_min = 0, t_max = 2*Math.PI;
+        var scale = 80, step = 400, inc = t_max/step;
+        
+        var t = t_min+(sx-350)*inc
+    	y = -scale*0.5 * Math.cos(t);
+    	x = (t / t_max) * cw;
+
+        drawRotatedImage(rengas, x +16, y +23,sx);
+	    drawRotatedImage(rengas, x +83, y +23,sx);
+    } else {
+        drawRotatedImage(rengas, 5 +16, 365 +23,sx);
+	    drawRotatedImage(rengas, 5 +83, 365 +23,sx);
+    }
+    
+
+//http://jsdo.it/debiru/sf3B
 
 	/*ctx.strokeStyle = "#FF0000";
 
@@ -95,7 +110,10 @@ function animate(time) {
         ctx.lineTo(i, Math.sin(i*200-50)*100+400);
     	ctx.stroke();
     }*/
+
+
 //HihgHill määrittely on tässä: 
+
   /*var cw = 300, xh = 400;
   var ox = 350, oy = 326;
   var t_min = 0, t_max = 2*Math.PI;
@@ -131,7 +149,9 @@ function animate(time) {
   ctx.stroke();
   ctx.closePath();*/
 
+
   //LowHill määrittely on tässä: 
+
   /*var cw = 550, xh = 400;
   var ox = 200, oy = 375;
   var t_min = 0, t_max = 2*Math.PI;
