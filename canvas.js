@@ -48,7 +48,7 @@ function drawRotatedImage(image, x, y, angle) {
 //funktiot piirretty kuvaan http://www.onlinefunctiongrapher.com/
 
 function isOnHighHill() { //sin(2x)
-	if((sx >= 200 && sx <= 400) || (sx >= 610 && sx <= 790)){
+	if((sx >= 2000 && sx <= 2300)){
 		return true
 	} else {
          return false
@@ -56,7 +56,7 @@ function isOnHighHill() { //sin(2x)
 }
 
 function isOnBasicHill() { //0.5sin()2x
-	if((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)){
+	if((sx > 350 && sx < 750) || (sx >= 1500 && sx <= 1900))){
 		return true
 	} else {
          return false
@@ -64,7 +64,7 @@ function isOnBasicHill() { //0.5sin()2x
 }
 
 function isOnLongHill() { //0.5sinx
-	if((sx > 990 && sx < 1340) || (sx >= 1840 && sx <= 2190)) {
+	if((sx > 800 && sx < 1350)) {
 		return true
 	} else {
          return false
@@ -95,8 +95,27 @@ function animate(time) {
         ctx.lineTo(i, Math.sin(i*200-50)*100+400);
     	ctx.stroke();
     }*/
+//HihgHill määrittely on tässä: 
+  /*var cw = 300, xh = 400;
+  var ox = 350, oy = 326;
+  var t_min = 0, t_max = 2*Math.PI;
+  var scale = 150, step = 200, inc = t_max/step;
 
-      var cw = 400, xh = 400;
+ ctx.strokeStyle = "#565660";
+  ctx.beginPath();
+  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
+  for (var t=t_min; t<=t_max; t+=inc){
+    y = -scale*0.5 * Math.cos(t);
+    x = (t / t_max) * cw;
+    ctx.lineTo(ox+x, oy-y);
+  }
+  ctx.stroke();
+  ctx.closePath();*/
+  
+
+  //BasicHill määrittely on tässä: 
+
+  /*var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 80, step = 200, inc = t_max/step;
@@ -110,7 +129,25 @@ function animate(time) {
     ctx.lineTo(ox+x, oy-y);
   }
   ctx.stroke();
-  ctx.closePath();
+  ctx.closePath();*/
+
+  //LowHill määrittely on tässä: 
+  /*var cw = 550, xh = 400;
+  var ox = 200, oy = 375;
+  var t_min = 0, t_max = 2*Math.PI;
+  var scale = 50, step = 200, inc = t_max/step;
+
+ ctx.strokeStyle = "#565660";
+  ctx.beginPath();
+  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
+  for (var t=t_min; t<=t_max; t+=inc){
+    y = -scale*0.5 * Math.cos(t);
+    x = (t / t_max) * cw;
+    ctx.lineTo(ox+x, oy-y);
+  }
+  ctx.stroke();
+  ctx.closePath();*/
+
 
 		sx = sx+auto.speed;
 	//TODO: renkaiden pyörimisnopeus
