@@ -75,8 +75,8 @@ function isOnLongHill() { //0.5sinx
 function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
 	delta = time - lastTime;
- 
-    
+
+
 	// Draw objects
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
@@ -118,11 +118,11 @@ function animate(time) {
         //hill1.draw();
 		lastTime = time - (delta % interval);
 
-		
+
 
 	}
 
-    
+
 
 
 	// Continue animation loop
