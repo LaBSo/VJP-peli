@@ -1,32 +1,28 @@
 var fps = 24;
-var interval = 1000 / fps;
+var interval = 1000/fps;
 var delta;
-var k = 0;
+var k =0;
 var aniFrame;
 var elapsedTime;
 var lastTime = 0;
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
 var background = new Image();
 background.src = 'taustaa.png';
 var gameHeight = c.height;
 var gameWidth = c.width;
-var sx = 0;
-var sy = 0;
+var sx=0;
+var sy=0;
 //Liitetään myöhemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
 var rengas = new Image();
-<<<<<<< HEAD
-rengas.src = "rengas.png";
-=======
 rengas.src = "audiR8pyora.png";
 //var hill1 = new smallHill(300)
->>>>>>> 60268a5cefb067977908ffc0a22570475c0fde90
 
 // TODO: poista kun toiminnallisuudet kunnossa
-var TO_RADIANS = Math.PI / 180;
+var TO_RADIANS = Math.PI/180;
 
 function drawRotatedImage(image, x, y, angle) {
 
@@ -43,14 +39,12 @@ function drawRotatedImage(image, x, y, angle) {
 
 	// draw it up and to the left by half the width
 	// and height of the image
-	ctx.drawImage(image, -(image.width / 2), -(image.height / 2));
+	ctx.drawImage(image, -(image.width/2), -(image.height/2));
 
 	// and restore the co-ords to how they were when we began
 	ctx.restore();
 }
 
-<<<<<<< HEAD
-=======
 //funktiot piirretty kuvaan http://www.onlinefunctiongrapher.com/
 
 function isOnHighHill() { //sin(2x)
@@ -77,27 +71,12 @@ function isOnLongHill() { //0.5sinx
 	}
 }
 
->>>>>>> 60268a5cefb067977908ffc0a22570475c0fde90
 // Animation loop
 function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
 	delta = time - lastTime;
-<<<<<<< HEAD
 
-	// Draw objects
-	if (delta > interval) {
-		ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		ctx.drawImage(audi, 69, 325);
-		//Showing the speed , testing purpose
-		//TODO: Poista tai korvaa, paremmalla toteutuksella.
-		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);
 
-		drawRotatedImage(rengas, 69 + 50, 325 + 115, sx);
-		drawRotatedImage(rengas, 69 + 205, 325 + 115, sx);
-=======
- 
-    
 	// Draw objects
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
@@ -108,25 +87,20 @@ function animate(time) {
 	drawRotatedImage(rengas, 5 +83, 365 +23,sx);
 	//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
 	//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
->>>>>>> 60268a5cefb067977908ffc0a22570475c0fde90
 
-		sx = sx + auto.speed;
-		//TODO: renkaiden pyörimisnopeus
+		sx = sx+auto.speed;
+	//TODO: renkaiden pyörimisnopeus
 
-<<<<<<< HEAD
-=======
         //hill1.draw();
->>>>>>> 60268a5cefb067977908ffc0a22570475c0fde90
 		lastTime = time - (delta % interval);
+
+
 
 	}
 
-<<<<<<< HEAD
-=======
-    
 
 
->>>>>>> 60268a5cefb067977908ffc0a22570475c0fde90
+
 	// Continue animation loop
 	aniFrame = requestAnimationFrame(animate);
 }
@@ -135,8 +109,8 @@ function animate(time) {
 $(document).ready(function() {
 
 	//TODO: EventListerner
-	document.addEventListener('keydown', checkKeyDown, false);
-	document.addEventListener('keyup', checkKeyUp, false);
+	document.addEventListener('keydown',checkKeyDown,false);
+    document.addEventListener('keyup',checkKeyUp,false);
 	// Start animation
 	if (requestAnimationFrame) {
 		aniFrame = requestAnimationFrame(animate);
@@ -144,39 +118,37 @@ $(document).ready(function() {
 });
 
 function checkKeyDown(e) {
-	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
-		e.preventDefault();
-		auto.changeGear('up');
-	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
-		e.preventDefault();
+    var keyID = (e.keyCode) ? e.keyCode : e.which;
+    if (keyID === 38 || keyID === 87) { //up arrow or W key
+        e.preventDefault();
+    }
+    if (keyID === 39 || keyID === 68) { //right arrow or D key
+        e.preventDefault();
 		auto.accelerate();
 
-	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
-		e.preventDefault();
-		auto.changeGear('down');
-	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
-		e.preventDefault();
-		auto.brake();
-	}
+    }
+    if (keyID === 40 || keyID === 83) { //down arrow or S key
+        e.preventDefault();
+    }
+    if (keyID === 37 || keyID === 65) { //left arrow or A key
+        e.preventDefault();
+    }
 }
 
-function checkKeyUp(e) {
-	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
-		e.preventDefault();
-	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
-		e.preventDefault();
 
-	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
-		e.preventDefault();
-	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
-		e.preventDefault();
-	}
+function checkKeyUp(e) {
+    var keyID = (e.keyCode) ? e.keyCode : e.which;
+    if (keyID === 38 || keyID === 87) { //up arrow or W key
+        e.preventDefault();
+    }
+    if (keyID === 39 || keyID === 68) { //right arrow or D key
+        e.preventDefault();
+
+    }
+    if (keyID === 40 || keyID === 83) { //down arrow or S key
+        e.preventDefault();
+    }
+    if (keyID === 37 || keyID === 65) { //left arrow or A key
+        e.preventDefault();
+    }
 }
