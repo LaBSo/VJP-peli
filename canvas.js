@@ -101,7 +101,7 @@ function animate(time) {
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 80, step = 200, inc = t_max/step;
 
- ctx.strokeStyle = "#FF0000";
+ ctx.strokeStyle = "#565660";
   ctx.beginPath();
   ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
   for (var t=t_min; t<=t_max; t+=inc){
