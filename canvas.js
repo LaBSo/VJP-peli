@@ -56,7 +56,7 @@ function isOnHighHill() { //sin(2x)
 }
 
 function isOnBasicHill() { //0.5sin()2x
-	if((sx >= 350 && sx <= 750) || (sx >= 1500 && sx <= 1900)){
+	if((sx >= 350+83 && sx <= 750+83) || (sx >= 1500 && sx <= 1900)){
 		return true
 	} else {
          return false
@@ -89,12 +89,16 @@ function animate(time) {
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 80, step = 400, inc = t_max/step;
         
-        var t = t_min+(sx-350)*inc
-    	y = -scale*0.5 * Math.cos(t);
-    	x = (t / t_max) * cw;
+        var t1 = t_min+(sx-350-16)*inc
+        var t2 = t_min+(sx-350-83)*inc
+    	var y1 = -scale*0.5 * Math.cos(t1);
+    	var x1 = (t1 / t_max) * cw;
+    	var y2 = -scale*0.5 * Math.cos(t2);
+    	var x2 = (t2 / t_max) * cw;
+    
 
-        drawRotatedImage(rengas, x +16, y +23,sx);
-	    drawRotatedImage(rengas, x +83, y +23,sx);
+        drawRotatedImage(rengas, x1, y1+oy,sx);
+	    drawRotatedImage(rengas, x2, y2+oy,sx);
     } else {
         drawRotatedImage(rengas, 5 +16, 365 +23,sx);
 	    drawRotatedImage(rengas, 5 +83, 365 +23,sx);
