@@ -81,11 +81,11 @@ function animate(time) {
 	if (delta > interval) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	ctx.drawImage(audi, 5, 365);
-	//ctx.drawImage(audi, 69, 325);
 
-    if(isOnBasicHill){	
+
+    if(sx >= 350-93 && sx <= 750+93){	
     	var cw = 400, xh = 400;
-        var ox = 350, oy = 360;
+        var oy = 360;
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 80, step = 400, inc = t_max/step;
         
@@ -97,8 +97,8 @@ function animate(time) {
     	var x2 = (t2 / t_max) * cw;
     
 
-        drawRotatedImage(rengas, x1, y1+oy,sx);
-	    drawRotatedImage(rengas, x2, y2+oy,sx);
+        drawRotatedImage(rengas, x1, y1+oy-23,sx);
+	    drawRotatedImage(rengas, x2, y2+oy-23,sx);
     } else {
         drawRotatedImage(rengas, 5 +16, 365 +23,sx);
 	    drawRotatedImage(rengas, 5 +83, 365 +23,sx);
