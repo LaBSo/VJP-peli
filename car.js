@@ -1,10 +1,15 @@
 function car(src) {
 	this.speed = 0;
 	this.gear = 1;
-	this.location
-	this.kierrokset
+	this.locationx = 73;
+	this.locationy = 383;
+	this.kierrokset;
 	this.src = src;
 	this.topspeed = 20;
+	this.rengas1x = this.locationx -33;
+	this.rengas2x = this.locationx + 33;
+	this.rengas1y = this.locationy +9;
+	this.rengas2y = this.locationy +9;
 }
 
 car.prototype.accelerate = function() {
@@ -27,20 +32,23 @@ car.prototype.changeGear = function(side) {
 	switch(side) {
 		case 'up':
 			this.gear = this.gear + 0.3;
-			console.log(this.topspeed);
-			console.log(this.gear);
 			break;
 
 		case 'down':
 			this.gear = this.gear - 0.3;
-			console.log("alas");
-			console.log(this.topspeed);
-			console.log(this.gear);
 			break;
 		/*
 		 * Vaihteen vaihtaminen
 		 */
 	}
+
+};
+car.prototype.update = function(img) {
+dy = this.rengas1y - this.rengas2y;
+dx = this.rengas1x - this.rengas2x;
+theta = Math.atan2(dy, dx);
+theta *= 360/Math.PI;
+drawRotatedImage(img, auto.locationx, auto.locationy, theta);
 
 };
 car.prototype.brake = function() {
@@ -53,8 +61,3 @@ car.prototype.brake = function() {
 		this.speed = 0;
 	}
 };
-// function update {
-/*
- * Hidastaminen
- */
-
