@@ -3,18 +3,18 @@ function car(src) {
 	this.gear = 1;
 	this.locationx = 73;
 	this.locationy = 383;
-	this.kierrokset;
+	this.kierrokset
 	this.src = src;
 	this.topspeed = 20;
-	this.rengas1x = this.locationx -33;
+	this.rengas1x = this.locationx - 33;
 	this.rengas2x = this.locationx + 33;
-	this.rengas1y = this.locationy +9;
-	this.rengas2y = this.locationy +9;
+	this.rengas1y = this.locationy + 9;
+	this.rengas2y = this.locationy + 9;
 }
 
 car.prototype.accelerate = function() {
 	/*
-	 * Kiihdytt�minen ja vaihteen vaihtaminen
+	 * Kiihdyttï¿½minen ja vaihteen vaihtaminen
 	 */
 	if (this.gear < 1)
 		this.gear = 1;
@@ -44,11 +44,11 @@ car.prototype.changeGear = function(side) {
 
 };
 car.prototype.update = function(img) {
-dy = this.rengas1y - this.rengas2y;
-dx = this.rengas1x - this.rengas2x;
-theta = Math.atan2(dy, dx);
-theta *= 360/Math.PI;
-drawRotatedImage(img, auto.locationx, auto.locationy, theta);
+	dy = this.rengas1y - this.rengas2y;
+	dx = this.rengas1x - this.rengas2x;
+	theta = Math.atan2(dy, dx);
+	theta *= 360 / Math.PI;
+	drawRotatedImage(img, auto.locationx, auto.locationy, theta);
 
 };
 car.prototype.brake = function() {
