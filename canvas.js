@@ -27,7 +27,7 @@ vaihdekuva.src = "mittari21.png";
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-lentokone = new plane("lentokone.png");
+var lentokone = new plane("lentokone.png");
 var rengas = new Image();
 rengas.src = "audiR8pyora.png";
 
