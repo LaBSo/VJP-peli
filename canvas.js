@@ -17,15 +17,13 @@ var oldSx1 = 0;
 var oldSx2 = 0;
 var oldSy1 = 0;
 var oldSy2 = 0;
-<<<<<<< HEAD
+
 var vaihdekuva = new Image();
 vaihdekuva.src = "vaihde1.png";
 var mittari = new Image();
 vaihdekuva.src = "mittari21.png";
 //LiitetÃ¯Â¿Â½Ã¯Â¿Â½n myÃ¯Â¿Â½hemmin car luokkaan
-=======
-//LiitetÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½hemmin car luokkaan
->>>>>>> 2ab0148aae096ae2daeee17799de34efee26db48
+
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -97,7 +95,7 @@ function animate(time) {
 	auto.update(audi);
 
     ctx.font = "20px Georgia";
-<<<<<<< HEAD
+
                 ctx.fillText(auto.speed, 10, 50);
                 ctx.drawImage(vaihdekuva, 695, 5);
                 ctx.drawImage(mittari, 540, 5);
@@ -107,17 +105,7 @@ function animate(time) {
  
                 sx = sx + auto.speed;
  
-=======
-		ctx.fillText(auto.speed, 10, 50);
 
-		drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
-		drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-		//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-		//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
-
-		sx = sx + auto.speed;
-
->>>>>>> 2ab0148aae096ae2daeee17799de34efee26db48
 //http://jsdo.it/debiru/sf3B
 
 	/*ctx.strokeStyle = "#FF0000";
