@@ -13,13 +13,17 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
+var oldSx1 = 0;
+var oldSx2 = 0;
+var oldSy1 = 0;
+var oldSy2 = 0;
 //Liitetï¿½ï¿½n myï¿½hemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
 var rengas = new Image();
 rengas.src = "audiR8pyora.png";
-//var hill1 = new smallHill(300)
+
 
 // TODO: poista kun toiminnallisuudet kunnossa
 var TO_RADIANS = Math.PI / 180;
@@ -55,13 +59,9 @@ function isOnHighHill() {//sin(2x)
 	}
 }
 
-<<<<<<< HEAD
 function isOnBasicHill() { //0.5sin()2x
 	if((sx >= 350+83 && sx <= 750+83) || (sx >= 1500 && sx <= 1900)){
-=======
-function isOnBasicHill() {//0.5sin()2x
-	if ((sx > 410 && sx < 590) || (sx >= 800 && sx <= 980) || (sx >= 1410 && sx <= 1770)) {
->>>>>>> 789afc6f68dd38610395311370b06921d1bcdb9d
+
 		return true
 	} else {
 		return false
@@ -94,19 +94,39 @@ function animate(time) {
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 80, step = 400, inc = t_max/step;
         
+        //lasketaan kummankin py�r�n xsuuntainen nopeus erikseen
+       var p11 = sx-
+
         var t1 = t_min+(sx-350-16)*inc
         var t2 = t_min+(sx-350-83)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
     	var y2 = -scale*0.5 * Math.cos(t2);
     	var x2 = (t2 / t_max) * cw;
-    
+
+        var newSpeed1 =  Math.sqrt( ((x1-oldX1)^2) + ((y1-oldY1)^2) );
+        var newSpeed1 =  Math.sqrt( ((x2-oldX2)^2) + ((y2-oldY2)^2) );
+
+        oldx1 = x1;
+	    oldx2 = x2;
+	    oldy1 = y1;
+        oldy2 = y2;
+        for(var i = this.startX; i < (this.startX + this.width); i++){
+        	//t�nne jotain pisteitten testausta....ymsyms
+        }
+
 
         drawRotatedImage(rengas, x1, y1+oy-23,sx);
 	    drawRotatedImage(rengas, x2, y2+oy-23,sx);
     } else {
         drawRotatedImage(rengas, 5 +16, 365 +23,sx);
 	    drawRotatedImage(rengas, 5 +83, 365 +23,sx);
+	    
+	    oldx1 = sx;
+	    oldx2 = sx;
+	    oldy1 = 0;
+        oldy2 = 0;
+	    sx = sx+auto.speed;
     }
     
 
@@ -178,24 +198,14 @@ function animate(time) {
   ctx.closePath();*/
 
 
-		sx = sx+auto.speed;
-	//TODO: renkaiden py�rimisnopeus
+		
 
-        //hill1.draw();
-		lastTime = time - (delta % interval);
-
-=======
-		ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+		/*ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 		ctx.drawImage(audi, 5, 365);
 		//ctx.drawImage(audi, 69, 325);
 		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);
->>>>>>> 789afc6f68dd38610395311370b06921d1bcdb9d
+		ctx.fillText(auto.speed, 10, 50);*/
 
-		drawRotatedImage(rengas, 5 + 16, 365 + 23, sx);
-		drawRotatedImage(rengas, 5 + 83, 365 + 23, sx);
-		//drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-		//drawRotatedImage(rengas, 69 +205, 325 +115,sx);
 
 		sx = sx + auto.speed;
 		//TODO: renkaiden pyï¿½rimisnopeus
@@ -207,6 +217,20 @@ function animate(time) {
 
 	// Continue animation loop
 	aniFrame = requestAnimationFrame(animate);
+}
+
+function lineDistance( point1, point2 )
+{
+  var xs = 0;
+  var ys = 0;
+ 
+  xs = point2.x - point1.x;
+  xs = xs * xs;
+ 
+  ys = point2.y - point1.y;
+  ys = ys * ys;
+ 
+  return Math.sqrt( xs + ys );
 }
 
 
