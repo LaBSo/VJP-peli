@@ -17,7 +17,7 @@ var oldSx1 = 0;
 var oldSx2 = 0;
 var oldSy1 = 0;
 var oldSy2 = 0;
-//LiitetÃ¯Â¿Â½Ã¯Â¿Â½n myÃ¯Â¿Â½hemmin car luokkaan
+//LiitetÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½n myÃƒÂ¯Ã‚Â¿Ã‚Â½hemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -108,7 +108,7 @@ function animate(time) {
     }*/
 
 
-//HihgHill määrittely on tässä:
+//HihgHill mÃ¤Ã¤rittely on tÃ¤ssÃ¤:
 
   /*var cw = 300, xh = 400;
   var ox = 350, oy = 326;
@@ -127,7 +127,7 @@ function animate(time) {
   ctx.closePath();*/
 
 
-  //BasicHill määrittely on tässä:
+  //BasicHill mÃ¤Ã¤rittely on tÃ¤ssÃ¤:
 
   /*var cw = 400, xh = 400;
   var ox = 350, oy = 360;
@@ -146,7 +146,7 @@ function animate(time) {
   ctx.closePath();*/
 
 
-  //LowHill määrittely on tässä:
+  //LowHill mÃ¤Ã¤rittely on tÃ¤ssÃ¤:
 
   /*var cw = 550, xh = 400;
   var ox = 200, oy = 375;
@@ -175,7 +175,7 @@ function animate(time) {
 
 
 		sx = sx + auto.speed;
-		//TODO: renkaiden pyÃ¯Â¿Â½rimisnopeus
+		//TODO: renkaiden pyÃƒÂ¯Ã‚Â¿Ã‚Â½rimisnopeus
 
 		//hill1.draw();
 		lastTime = time - (delta % interval);
