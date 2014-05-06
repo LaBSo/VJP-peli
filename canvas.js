@@ -100,15 +100,6 @@ function animate(time) {
  
 //http://jsdo.it/debiru/sf3B
  
-        /*ctx.strokeStyle = "#FF0000";
- 
-         for (var i = 50; i < 230; i++) {
-        ctx.moveTo(i, 400);
-        ctx.lineTo(i, Math.sin(i*200-50)*100+400);
-        ctx.stroke();
-    }*/
- 
- 
 //HihgHill määrittely on tässä:
  
   /*var cw = 300, xh = 400;
@@ -182,13 +173,13 @@ function animate(time) {
                 lastTime = time - (delta % interval);
 		if(auto.gear == 1){
 			vaihdekuva.src = "vaihde1.png";	
-		} else if(auto.gear == 2){
+		} else if(auto.gear == 1.3){
 			vaihdekuva.src = "vaihde2.png";
-		} else if(auto.gear == 3){
+		} else if(auto.gear == 1.6){
 			vaihdekuva.src = "vaihde3.png";
-		} else if(auto.gear == 4){
+		} else if(auto.gear == 1.9){
 			vaihdekuva.src = "vaihde4.png";
-		} else if(auto.gear == 5){
+		} else if(auto.gear == 2.2){
 			vaihdekuva.src = "vaihde5.png";
 		}
 		ctx.drawImage(vaihdekuva, 695, 5);
