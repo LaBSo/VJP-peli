@@ -21,7 +21,9 @@ var oldSy2 = 0;
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-lentokone = new plane("lentokone.png");
+plane = new plane("lentokone.png");
+var lentokone  = new Image();
+lentokone.src=plane.src;
 var rengas = new Image();
 rengas.src = "audiR8pyora.png";
 
@@ -87,6 +89,7 @@ function animate(time) {
 
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	auto.update(audi);
+	plane.update(lentokone);
 
     ctx.font = "20px Georgia";
 		ctx.fillText(auto.speed, 10, 50);

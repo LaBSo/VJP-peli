@@ -3,7 +3,7 @@ function car(src) {
 	this.gear = 1;
 	this.locationx = 73;
 	this.locationy = 383;
-	this.kierrokset
+	this.kierrokset;
 	this.src = src;
 	this.topspeed = 20;
 	this.rengas1x = this.locationx - 33;
