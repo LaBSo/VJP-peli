@@ -17,6 +17,8 @@ var oldSx1 = 0;
 var oldSx2 = 0;
 var oldSy1 = 0;
 var oldSy2 = 0;
+var vaihdekuva = new Image();
+vaihdekuva.src = "vaihde1.png";
 //LiitetÃ¯Â¿Â½Ã¯Â¿Â½n myÃ¯Â¿Â½hemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
@@ -89,11 +91,10 @@ function animate(time) {
  
     ctx.font = "20px Georgia";
                 ctx.fillText(auto.speed, 10, 50);
+                ctx.drawImage(vaihdekuva, 695, 5);
  
                 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
                 drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-                //drawRotatedImage(rengas, 69 +50, 325 +115,sx);
-                //drawRotatedImage(rengas, 69 +205, 325 +115,sx);
  
                 sx = sx + auto.speed;
  
@@ -179,7 +180,6 @@ function animate(time) {
  
                 //hill1.draw();
                 lastTime = time - (delta % interval);
-                var vaihdekuva = new Image();
 		if(auto.gear == 1){
 			vaihdekuva.src = "vaihde1.png";	
 		} else if(auto.gear == 2){
