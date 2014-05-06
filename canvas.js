@@ -21,13 +21,13 @@ var oldSy2 = 0;
 var vaihdekuva = new Image();
 vaihdekuva.src = "vaihde1.png";
 var mittari = new Image();
-vaihdekuva.src = "mittari21.png";
+mittari.src = "mittari20.png";
 //LiitetÃ¯Â¿Â½Ã¯Â¿Â½n myÃ¯Â¿Â½hemmin car luokkaan
 
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-var lentokone = new plane("lentokone.png");
+//lentokone = new plane("lentokone.png");
 var rengas = new Image();
 rengas.src = "audiR8pyora.png";
 
@@ -98,7 +98,7 @@ function animate(time) {
 
                 ctx.fillText(auto.speed, 10, 50);
                 ctx.drawImage(vaihdekuva, 695, 5);
-                ctx.drawImage(mittari, 540, 5);
+                ctx.drawImage(mittari, 540, -32);
  
                 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
                 drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
@@ -189,25 +189,74 @@ function animate(time) {
 		//hill1.draw();
 		lastTime = time - (delta % interval);
 
+		if(auto.gear == 1){
+			vaihdekuva.src = "vaihde1.png";	
+		} else if(auto.gear == 1.3){
+			vaihdekuva.src = "vaihde2.png";
+		} else if(auto.gear == 1.6){
+			vaihdekuva.src = "vaihde3.png";
+		} else if(auto.gear == 1.9){
+			vaihdekuva.src = "vaihde4.png";
+		} else if(auto.gear == 2.2){
+			vaihdekuva.src = "vaihde5.png";
+		}
+		ctx.drawImage(vaihdekuva, 695, 5);
+
+		if (auto.speed == 0){
+            mittari.src = "mittari0.png";
+		} else if(auto.speed <= 3){
+			mittari.src = "mittari1.png";	
+		} else if(auto.speed <= 5){
+			mittari.src = "mittari2.png";
+		} else if(auto.speed <= 8){
+			mittari.src = "mittari3.png";
+		} else if(auto.speed <= 10){
+			mittari.src = "mittari4.png";
+		} else if(auto.speed <= 13){
+			mittari.src = "mittari5.png";
+		} else if(auto.speed <= 15){
+			mittari.src = "mittari6.png";
+		} else if(auto.speed <= 18){
+			mittari.src = "mittari7.png";
+		} else if(auto.speed <= 20){
+			mittari.src = "mittari8.png";
+		} else if(auto.speed <= 23){
+			mittari.src = "mittari9.png";
+		} else if(auto.speed <= 25){
+			mittari.src = "mittari10.png";
+		} else if(auto.speed <= 28){
+			mittari.src = "mittari11.png";
+		} else if(auto.speed <= 30){
+			mittari.src = "mittari12.png";
+		} else if(auto.speed <= 33){
+			mittari.src = "mittari13.png";
+		} else if(auto.speed <= 35){
+			mittari.src = "mittari14.png";
+		} else if(auto.speed <= 38){
+			mittari.src = "mittari15.png";
+		} else if(auto.speed <= 40){
+			mittari.src = "mittari16.png";
+		} else if(auto.speed <= 43){
+			mittari.src = "mittari17.png";
+		} else if(auto.speed <= 45){
+			mittari.src = "mittari18.png";
+		} else if(auto.speed <= 48){
+			mittari.src = "mittari19.png";
+		}else if(auto.speed <= 50){
+			mittari.src = "mittari20.png";
+		} else if(auto.speed <= 60){
+			mittari.src = "mittari21.png";
+		} 
+
+		ctx.drawImage(mittari, 540, -32);
+
+
 	}
 
 	// Continue animation loop
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function lineDistance( point1, point2 )
-{
-  var xs = 0;
-  var ys = 0;
-
-  xs = point2.x - point1.x;
-  xs = xs * xs;
-
-  ys = point2.y - point1.y;
-  ys = ys * ys;
-
-  return Math.sqrt( xs + ys );
-}
 
 
 $(document).ready(function() {
