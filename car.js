@@ -3,7 +3,7 @@ function car(src) {
 	this.gear = 1;
 	this.locationx = 73;
 	this.locationy = 383;
-	this.kierrokset;
+	this.kierrokset
 	this.src = src;
 	this.topspeed = 20;
 	this.rengas1x = this.locationx - 33;
@@ -44,12 +44,23 @@ car.prototype.changeGear = function(side) {
 
 };
 car.prototype.update = function(img) {
+	var gameOver = false;
 	dy = this.rengas1y - this.rengas2y;
 	dx = this.rengas1x - this.rengas2x;
 	theta = Math.atan2(dy, dx);
 	theta *= 360 / Math.PI;
 	drawRotatedImage(img, auto.locationx, auto.locationy, theta);
 
+	// Maalinpaikka
+	if (sx >= 700 && n==0) {
+		gameOver = true;
+	}
+	//Firebase muutos
+		if (gameOver) {
+		goal(scoreRef, "Atte", endTime);
+		console.log("TUlee tänne");
+		n=1;
+	}
 };
 car.prototype.brake = function() {
 	/*

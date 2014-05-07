@@ -29,6 +29,7 @@ mittari.src = "mittari0.png";
 var watch = false;
 var startTime;
 var endTime;
+var n =0;
 
 // TODO: poista kun toiminnallisuudet kunnossa
 var TO_RADIANS = Math.PI / 180;
@@ -178,13 +179,13 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraBasicHill(maenAlku, xPyora) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 80, step = 200, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
-  var uusiNopeus = xPyÃ¶ra-kokSpeed;
+  var uusiNopeus = xPyora-kokSpeed;
 
         var t1 = t_min+(uusiNopeus-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
@@ -196,31 +197,31 @@ function piirraPyoraBasicHill(maenAlku, xPyÃ¶ra) {
         sx = sx+(auto.speed-kokSpeed);
 }
 
-function piirraPyoraLowHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraLowHill(maenAlku, xPyora) {
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 50, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
+        var t1 = t_min+(xPyora-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
+        drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
-function piirraPyoraHighHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraHighHill(maenAlku, xPyora) {
 
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 150, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
+        var t1 = t_min+(xPyora-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
+        drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
 function piirraVaihdemittari() {
@@ -291,6 +292,7 @@ function piirraNopeusmittari() {
 
 
 $(document).ready(function() {
+	 scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
 
 	//TODO: EventListerner
 	document.addEventListener('keydown', checkKeyDown, false);
