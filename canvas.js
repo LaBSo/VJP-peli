@@ -96,85 +96,6 @@ function animate(time) {
 		    sx = sx + auto.speed;
         }
         
-
-
-
-
-
-
-//http://jsdo.it/debiru/sf3B
-
-
-//HihgHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 300, xh = 400;
-  var ox = 350, oy = 326;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 150, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-  //BasicHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 400, xh = 400;
-  var ox = 350, oy = 360;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-  //LowHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 550, xh = 400;
-  var ox = 200, oy = 375;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 50, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-
-
-		/*ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		ctx.drawImage(audi, 5, 365);
-		//ctx.drawImage(audi, 69, 325);
-		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);*/
-
-
-
-		//TODO: renkaiden pyÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½rimisnopeus
-
-		//hill1.draw();
 		lastTime = time - (delta % interval);
 
 		piirraVaihdemittari();
@@ -232,12 +153,10 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
 }
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
-        var t_min = 0, t_max = 2*Math.PI;
-        var scale = 50, step = 200, inc = t_max/step;
-
-        var t1 = t_min+(xPyora-maenAlku)*inc
-    	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
+        var cw = 550, xh = 400;
+       var ox = 200, oy = 375;
+       var t_min = 0, t_max = 2*Math.PI;
+       var scale = 50, step = 200, inc = t_max/step;
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
@@ -246,12 +165,10 @@ function piirraPyoraLowHill(maenAlku, xPyora) {
 
 function piirraPyoraHighHill(maenAlku, xPyora) {
 
+  var cw = 300, xh = 400;
+  var ox = 350, oy = 326;
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 150, step = 200, inc = t_max/step;
-
-        var t1 = t_min+(xPyora-maenAlku)*inc
-    	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku

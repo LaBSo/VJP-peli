@@ -10,6 +10,7 @@ function car(src) {
 	this.rengas2x = this.locationx + 33;
 	this.rengas1y = this.locationy + 9;
 	this.rengas2y = this.locationy + 9;
+	
 }
 
 car.prototype.accelerate = function() {
