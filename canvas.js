@@ -80,20 +80,23 @@ function animate(time) {
         ctx.drawImage(vaihdekuva, 695, 5);
 	    ctx.drawImage(mittari, 540, -32);
 
-
+        //auto kokonaan maessa
         if(sx+auto.rengas2x >= 335 && sx+auto.rengas2x <= 750 && sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
         	piirraPyoraBasicHill(335, sx+82, 2);
         	piirraPyoraBasicHill(335, sx+15, 1);
+        //etupyora maessa
         } else if(sx+auto.rengas2x>= 335 && sx+auto.rengas2x <= 750){
         	piirraPyoraBasicHill(335, sx+82, 2);
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
+        //takapyora maessa
         } else if(sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
         	piirraPyoraBasicHill(335, sx+15, 1);
         	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
+        //ei maessa
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-		    sx = sx + auto.speed;
+		    sx = sx + auto.speed; // uusi nopeus
         }
         
 		lastTime = time - (delta % interval);
@@ -108,33 +111,26 @@ function animate(time) {
 }
 
 function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
-  var cw = 400, xh = 400;
-  var ox = 350, oy = 360;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 400, inc = t_max/step;
-  var kokSpeed  = auto.speed*0.7;
-  var uusiNopeus = xPyora-kokSpeed;
+  var cw = 400 //maen leveys
+  t_max = 2*Math.PI; //kayran maksimi
+  var scale = 80, step = cw, inc = t_max/step; // scale korkeus, inc kerroin joka tulee maksimista ja kayran leveydesta
 
-        var t1 = t_min+(xPyora-maenAlku)*inc
+        var t1 = (xPyora-maenAlku)*inc //xPyora on pyoran sijainti taustakuvalla, katsotaan kohta maessa
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
-
-        if(pyoranNro == 1 ){
-        	 drawRotatedImage(rengas, 13+23, oy-y1-10,uusiNopeus);
-        } else {
-        	drawRotatedImage(rengas, 13+83+23, oy-y1-10,uusiNopeus);
+        if(pyoranNro == 1 ){ //jos etupyora
+        	 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y-y1-45,sx);
+        } else { //jos takapyora
+        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
         }
-
-        
-        
-        
-        for(var i=1; i<=auto.speed; i++){
-        	var t2 = t_min+(xPyora + i -maenAlku)*inc
+                        
+        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
+        	var t2 = (xPyora + i -maenAlku)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
     	    var x2 = (t2 / t_max) * cw;
         	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
-        		sx = sx+i;
+        		sx = sx+i; //uusi x-koordinaatti
         		break; 
         	}
         }
@@ -143,26 +139,57 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
         
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
-        var cw = 550, xh = 400;
-       var ox = 200, oy = 375;
-       var t_min = 0, t_max = 2*Math.PI;
-       var scale = 50, step = 200, inc = t_max/step;
+        var cw = 550
+       t_max = 2*Math.PI;
+       var scale = 50, step = 550, inc = t_max/step;
 
 
-        //tÃƒÂ¤hÃƒÂ¤n vaiheen mÃƒÂ¤ÃƒÂ¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyora);
+        var t1 = (xPyora-maenAlku)*inc //xPyora on pyoran sijainti taustakuvalla, katsotaan kohta maessa
+    	var y1 = -scale*0.5 * Math.cos(t1);
+    	var x1 = (t1 / t_max) * cw;
+
+        if(pyoranNro == 1 ){ //jos etupyora
+        	 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y-y1-45,sx);
+        } else { //jos takapyora
+        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
+        }
+                        
+        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
+        	var t2 = (xPyora + i -maenAlku)*inc
+    	    var y2 = -scale*0.5 * Math.cos(t2);
+    	    var x2 = (t2 / t_max) * cw;
+        	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
+        		sx = sx+i; //uusi x-koordinaatti
+        		break; 
+        	}
+        }
 }
 
 function piirraPyoraHighHill(maenAlku, xPyora) {
 
-  var cw = 300, xh = 400;
-  var ox = 350, oy = 326;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 150, step = 200, inc = t_max/step;
+  var cw = 300
+  t_max = 2*Math.PI;
+  var scale = 150, step = 300, inc = t_max/step;
 
+        var t1 = (xPyora-maenAlku)*inc //xPyora on pyoran sijainti taustakuvalla, katsotaan kohta maessa
+    	var y1 = -scale*0.5 * Math.cos(t1);
+    	var x1 = (t1 / t_max) * cw;
 
-        //tÃƒÂ¤hÃƒÂ¤n vaiheen mÃƒÂ¤ÃƒÂ¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyora);
+        if(pyoranNro == 1 ){ //jos etupyora
+        	 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y-y1-45,sx);
+        } else { //jos takapyora
+        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
+        }
+                        
+        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
+        	var t2 = (xPyora + i -maenAlku)*inc
+    	    var y2 = -scale*0.5 * Math.cos(t2);
+    	    var x2 = (t2 / t_max) * cw;
+        	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
+        		sx = sx+i; //uusi x-koordinaatti
+        		break; 
+        	}
+        }
 }
 
 function piirraVaihdemittari() {
