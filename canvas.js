@@ -81,15 +81,15 @@ function animate(time) {
 	    ctx.drawImage(mittari, 540, -32);
 
 
-        if(sx+auto.rengas2x >= 340 && sx+auto.rengas2x <= 750 && sx+auto.rengas1x >= 340 && sx+auto.rengas1x <= 750){
-        	piirraPyoraBasicHill(340, sx+82, 2);
-        	piirraPyoraBasicHill(340, sx+15, 1);
-        } else if(sx+auto.rengas2x>= 340 && sx+auto.rengas2x <= 750){
-        	piirraPyoraBasicHill(340, sx+83+15, 2);
+        if(sx+auto.rengas2x >= 335 && sx+auto.rengas2x <= 750 && sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
+        	piirraPyoraBasicHill(335, sx+82, 2);
+        	piirraPyoraBasicHill(335, sx+15, 1);
+        } else if(sx+auto.rengas2x>= 335 && sx+auto.rengas2x <= 750){
+        	piirraPyoraBasicHill(335, sx+82, 2);
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
-        } else if(sx+auto.rengas1x >= 340 && sx+auto.rengas1x <= 750){
-        	piirraPyoraBasicHill(340, sx+23+15, 1);
-        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas2y, sx);
+        } else if(sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
+        	piirraPyoraBasicHill(335, sx+15, 1);
+        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
