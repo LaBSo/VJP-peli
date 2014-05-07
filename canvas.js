@@ -81,13 +81,15 @@ function animate(time) {
 	     ctx.drawImage(mittari, 540, -32);
 
 
-        if(sx+83+15 >= 400 && sx+83 <= 800 && sx+23+15 >= 400 && sx+23 <= 800){
-        	piirraPyoraBasicHill(400, sx+83+15, 2);
-        	piirraPyoraBasicHill(400, sx+23+15, 1);
-        } else if(sx+83+15 >= 400 && sx+83 <= 800){
-        	piirraPyoraBasicHill(400, sx+83+15, 2);
-        } else if(sx+23+15 >= 400 && sx+23 <= 800){
-        	piirraPyoraBasicHill(400, sx+23+15, 1);
+        if(sx+83+15 >= 350 && sx+83+20+23 <= 750 && sx+23+15 >= 350 && sx+23 <= 750){
+        	piirraPyoraBasicHill(350, sx+83+15, 2);
+        	piirraPyoraBasicHill(350, sx+23+15, 1);
+        } else if(sx+83+15 >= 350 && sx+83+20+23 <= 750){
+        	piirraPyoraBasicHill(350, sx+83+15, 2);
+        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
+        } else if(sx+23+15 >= 350 && sx+23+15 <= 750){
+        	piirraPyoraBasicHill(350, sx+23+15, 1);
+        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas2y, sx);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
@@ -198,9 +200,9 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
 
 
         if(pyoranNro == 1 ){
-        	 drawRotatedImage(rengas, 13+23, oy-y1,uusiNopeus);
+        	 drawRotatedImage(rengas, 13+23, oy-y1-10,uusiNopeus);
         } else {
-        	drawRotatedImage(rengas, 13+83+23, oy-y1,uusiNopeus);
+        	drawRotatedImage(rengas, 13+83+23, oy-y1-10,uusiNopeus);
         }
         
         sx = sx+(auto.speed-kokSpeed);
