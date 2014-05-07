@@ -75,15 +75,14 @@ function animate(time) {
         ctx.drawImage(vaihdekuva, 695, 5);
 	     ctx.drawImage(mittari, 540, -32);
 
-        if(sx+83 >= 400 && sx+83 <= 800){
-        	console.log()
+        if(sx+83+15 >= 400 && sx+83 <= 800){
         	piirraPyoraBasicHill(400, sx+83);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
 		    sx = sx + auto.speed;
         }
-        if(sx+13 >= 400 && sx+13 <= 800){
+        if(sx+23+15 >= 400 && sx+23 <= 800){
         	piirraPyoraBasicHill(400, sx+13);
         } 
 		
@@ -183,7 +182,9 @@ function piirraPyoraBasicHill(maenAlku, xPyöra) {
   var scale = 80, step = 200, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
   var uusiNopeus = xPyöra-kokSpeed;
+  
 
+  for(var i; sx-auto.speed; )
         var t1 = t_min+(uusiNopeus-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
@@ -192,6 +193,7 @@ function piirraPyoraBasicHill(maenAlku, xPyöra) {
         //tähän vaiheen määrittely ja nopeuden lasku
         drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
         sx = sx+(auto.speed-kokSpeed);
+
 }
 
 function piirraPyoraLowHill(maenAlku, xPyöra) {
