@@ -183,7 +183,30 @@ function animate(time) {
 		//hill1.draw();
 		lastTime = time - (delta % interval);
 
-				if(auto.gear == 1){
+		piirraVaihdemittari();
+        piirraNopeusmittari();
+
+	}
+
+	// Continue animation loop
+	aniFrame = requestAnimationFrame(animate);
+}
+
+function piirraPyoraLowHill(maenAlku, xPyöra) {
+        var t_min = 0, t_max = 2*Math.PI;
+        var scale = 80, step = 400, inc = t_max/step;
+
+
+        var t1 = t_min+(xPyöra-maenAlku)*inc
+    	var y1 = -scale*0.5 * Math.cos(t1);
+    	var x1 = (t1 / t_max) * cw;
+
+        //tähän vaiheen määrittely ja nopeuden lasku
+        drawRotatedImage(rengas, x1, y1+oy,xPyöra);
+}
+
+function piirraVaihdemittari() {
+	if(auto.gear == 1){
 			vaihdekuva.src = "vaihde1.png";	
 		} else if(auto.gear == 1.3){
 			vaihdekuva.src = "vaihde2.png";
@@ -196,7 +219,10 @@ function animate(time) {
 		}
 		ctx.drawImage(vaihdekuva, 695, 5);
 
-		if (auto.speed == 0){
+}
+
+function piirraNopeusmittari() {
+     		if (auto.speed == 0){
             mittari.src = "mittari0.png";
 		} else if(auto.speed <= 3){
 			mittari.src = "mittari1.png";	
@@ -243,24 +269,6 @@ function animate(time) {
 		} 
 
 		ctx.drawImage(mittari, 540, -32);
-
-	}
-
-	// Continue animation loop
-	aniFrame = requestAnimationFrame(animate);
-}
-
-function piirraPyoraLowHill(maenAlku, xPyöra) {
-        var t_min = 0, t_max = 2*Math.PI;
-        var scale = 80, step = 400, inc = t_max/step;
-
-
-        var t1 = t_min+(xPyöra-maenAlku)*inc
-    	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
-
-        //tähän vaiheen määrittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyöra);
 }
 
 
