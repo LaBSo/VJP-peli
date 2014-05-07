@@ -13,17 +13,26 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-//LiitetÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½hemmin car luokkaan
+var oldX1 = 0;
+var oldX2 = 0;
+var oldY1 = 0;
+var oldY2 = 0;
+
+
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
+
 plane = new plane("pinempiLentokone.png");
 var lentokone  = new Image();
 lentokone.src=plane.src;
+
 var rengas = new Image();
 rengas.src = "audiR8pyora.png";
+
 var vaihdekuva = new Image();
 vaihdekuva.src = "vaihde1.png";
+
 var mittari = new Image();
 mittari.src = "mittari0.png";
 
@@ -180,7 +189,7 @@ function piirraPyoraBasicHill(maenAlku, xPyöra) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 200, inc = t_max/step;
+  var scale = 80, step = 400, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
   var uusiNopeus = xPyöra-kokSpeed;
   
