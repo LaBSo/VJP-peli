@@ -115,7 +115,7 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
   var kokSpeed  = auto.speed*0.7;
   var uusiNopeus = xPyora-kokSpeed;
 
-        var t1 = t_min+(uusiNopeus-maenAlku)*inc
+        var t1 = t_min+(xPyora-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
@@ -125,32 +125,22 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
         } else {
         	drawRotatedImage(rengas, 13+83+23, oy-y1-10,uusiNopeus);
         }
-        
-        sx = sx+(auto.speed-kokSpeed);
 
-        /*
         
         
-        if(pyoranNro == 1 ){
-        	 drawRotatedImage(rengas, 13+23, oy-y1,sx);
-        } else {
-        	drawRotatedImage(rengas, 13+83+23, oy-y1,sx);
-        }
-        for(var i=1; i<=auto.speed; i+=1){
-        	var t2 = t_min+(sx + i -maenAlku)*inc
-    	    var y2 = -scale*0.5 * Math.cos(t1);
-    	    var x2 = (t1 / t_max) * cw;
-    	    console.log(Math.sqrt(i^2+(y2-y1)^2));
-    	    console.log(auto.speed);
-        	if(Math.sqrt(i^2+(y2-y1)^2)==auto.speed){
+        
+        for(var i=1; i<=auto.speed; i++){
+        	var t2 = t_min+(xPyora + i -maenAlku)*inc
+    	    var y2 = -scale*0.5 * Math.cos(t2);
+    	    var x2 = (t2 / t_max) * cw;
+        	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
         		sx = sx+i;
-        		return; 
+        		break; 
         	}
         }
         
 }
-        */
-}
+        
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
         var cw = 550, xh = 400;
