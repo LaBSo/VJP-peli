@@ -17,7 +17,7 @@ var sy = 0;
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-plane = new plane("lentokone.png");
+plane = new plane("pinempiLentokone.png");
 var lentokone  = new Image();
 lentokone.src=plane.src;
 var rengas = new Image();
@@ -76,6 +76,7 @@ function animate(time) {
 	     ctx.drawImage(mittari, 540, -32);
 
         if(sx+83+15 >= 400 && sx+83 <= 800){
+        	console.log()
         	piirraPyoraBasicHill(400, sx+83);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
@@ -184,7 +185,7 @@ function piirraPyoraBasicHill(maenAlku, xPyöra) {
   var uusiNopeus = xPyöra-kokSpeed;
   
 
-  for(var i; sx-auto.speed; )
+  //for(var i; sx-auto.speed; )
         var t1 = t_min+(uusiNopeus-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
@@ -193,7 +194,6 @@ function piirraPyoraBasicHill(maenAlku, xPyöra) {
         //tähän vaiheen määrittely ja nopeuden lasku
         drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
         sx = sx+(auto.speed-kokSpeed);
-
 }
 
 function piirraPyoraLowHill(maenAlku, xPyöra) {

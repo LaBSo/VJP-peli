@@ -1,7 +1,7 @@
 function plane(src) {
         this.speed = 0;
-        this.locationx = -165;
-        this.locationy = -70;
+        this.locationx = -80;
+        this.locationy = -20;
         this.src = src;
         this.topspeed = 30;
 }
