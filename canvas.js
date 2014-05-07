@@ -26,8 +26,9 @@ var vaihdekuva = new Image();
 vaihdekuva.src = "vaihde1.png";
 var mittari = new Image();
 mittari.src = "mittari0.png";
-
-
+var watch = false;
+var startTime;
+var endTime;
 
 // TODO: poista kun toiminnallisuudet kunnossa
 var TO_RADIANS = Math.PI / 180;
@@ -68,12 +69,13 @@ function animate(time) {
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	auto.update(audi);
 	plane.update(lentokone);
-
+	endTime = new Date() - startTime;
     ctx.font = "20px Georgia";
 		ctx.fillText(auto.speed, 10, 50);
-        
+		ctx.fillText(endTime, 10, 80);
         ctx.drawImage(vaihdekuva, 695, 5);
 	     ctx.drawImage(mittari, 540, -32);
+
 
         if(sx+83 >= 400 && sx+83 <= 800){
         	console.log()
@@ -85,9 +87,9 @@ function animate(time) {
         }
         if(sx+13 >= 400 && sx+13 <= 800){
         	piirraPyoraBasicHill(400, sx+13);
-        } 
-		
-         
+        }
+
+
 
 
 
@@ -201,7 +203,7 @@ function piirraPyoraLowHill(maenAlku, xPyöra) {
         var t1 = t_min+(xPyöra-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
-        
+
 
         //tähän vaiheen määrittely ja nopeuden lasku
         drawRotatedImage(rengas, x1, y1+oy,xPyöra);
@@ -215,7 +217,7 @@ function piirraPyoraHighHill(maenAlku, xPyöra) {
         var t1 = t_min+(xPyöra-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
-        
+
 
         //tähän vaiheen määrittely ja nopeuden lasku
         drawRotatedImage(rengas, x1, y1+oy,xPyöra);
@@ -223,7 +225,7 @@ function piirraPyoraHighHill(maenAlku, xPyöra) {
 
 function piirraVaihdemittari() {
 	if(auto.gear == 1){
-			vaihdekuva.src = "vaihde1.png";	
+			vaihdekuva.src = "vaihde1.png";
 		} else if(auto.gear == 1.3){
 			vaihdekuva.src = "vaihde2.png";
 		} else if(auto.gear == 1.6){
@@ -241,7 +243,7 @@ function piirraNopeusmittari() {
      		if (auto.speed == 0){
             mittari.src = "mittari0.png";
 		} else if(auto.speed <= 3){
-			mittari.src = "mittari1.png";	
+			mittari.src = "mittari1.png";
 		} else if(auto.speed <= 5){
 			mittari.src = "mittari2.png";
 		} else if(auto.speed <= 8){
@@ -282,7 +284,7 @@ function piirraNopeusmittari() {
 			mittari.src = "mittari20.png";
 		} else if(auto.speed <= 60){
 			mittari.src = "mittari21.png";
-		} 
+		}
 
 		ctx.drawImage(mittari, 540, -32);
 }
@@ -307,7 +309,11 @@ function checkKeyDown(e) {
 	if (keyID === 39 || keyID === 68) {//right arrow or D key
 		e.preventDefault();
 		auto.accelerate();
+		if(watch == false){
+		startTime= new Date();
 
+		watch = true;
+		}
 	}
 	if (keyID === 40 || keyID === 83) {//down arrow or S key
 		e.preventDefault();
