@@ -110,14 +110,6 @@ function animate(time) {
 
 //http://jsdo.it/debiru/sf3B
 
-	/*ctx.strokeStyle = "#FF0000";
-
-	 for (var i = 50; i < 230; i++) {
-    	ctx.moveTo(i, 400);
-        ctx.lineTo(i, Math.sin(i*200-50)*100+400);
-    	ctx.stroke();
-    }*/
-
 
 //HihgHill mÃƒÆ’Ã‚Â¤ÃƒÆ’Ã‚Â¤rittely on tÃƒÆ’Ã‚Â¤ssÃƒÆ’Ã‚Â¤:
 
@@ -258,6 +250,18 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
+function piirraPyoraLowHill(maenAlku, xPyöra) {
+        var t_min = 0, t_max = 2*Math.PI;
+        var scale = 80, step = 400, inc = t_max/step;
+
+
+        var t1 = t_min+(xPyöra-maenAlku)*inc
+    	var y1 = -scale*0.5 * Math.cos(t1);
+    	var x1 = (t1 / t_max) * cw;
+
+        //tähän vaiheen määrittely ja nopeuden lasku
+        drawRotatedImage(rengas, x1, y1+oy,xPyöra);
+}
 
 
 $(document).ready(function() {
