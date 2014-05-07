@@ -195,7 +195,7 @@ function piirraPyoraBasicHill(maenAlku, xPyora) {
     	var x1 = (t1 / t_max) * cw;
 
 
-        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
+        //for(var i=xPyora; i<=xPyora; i+=1){ }
         drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
         sx = sx+(auto.speed-kokSpeed);
 }
