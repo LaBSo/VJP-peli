@@ -13,7 +13,7 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-//LiitetÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½hemmin car luokkaan
+//LiitetÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½hemmin car luokkaan
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -97,7 +97,7 @@ function animate(time) {
 //http://jsdo.it/debiru/sf3B
 
 
-//HihgHill mÃƒÆ’Ã‚Â¤ÃƒÆ’Ã‚Â¤rittely on tÃƒÆ’Ã‚Â¤ssÃƒÆ’Ã‚Â¤:
+//HihgHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
 
   /*var cw = 300, xh = 400;
   var ox = 350, oy = 326;
@@ -116,7 +116,7 @@ function animate(time) {
   ctx.closePath();*/
 
 
-  //BasicHill mÃƒÆ’Ã‚Â¤ÃƒÆ’Ã‚Â¤rittely on tÃƒÆ’Ã‚Â¤ssÃƒÆ’Ã‚Â¤:
+  //BasicHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
 
   /*var cw = 400, xh = 400;
   var ox = 350, oy = 360;
@@ -135,7 +135,7 @@ function animate(time) {
   ctx.closePath();*/
 
 
-  //LowHill mÃƒÆ’Ã‚Â¤ÃƒÆ’Ã‚Â¤rittely on tÃƒÆ’Ã‚Â¤ssÃƒÆ’Ã‚Â¤:
+  //LowHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
 
   /*var cw = 550, xh = 400;
   var ox = 200, oy = 375;
@@ -164,7 +164,7 @@ function animate(time) {
 
 
 
-		//TODO: renkaiden pyÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½rimisnopeus
+		//TODO: renkaiden pyÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½rimisnopeus
 
 		//hill1.draw();
 		lastTime = time - (delta % interval);
@@ -178,49 +178,49 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyöra) {
+function piirraPyoraBasicHill(maenAlku, xPyÃ¶ra) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 80, step = 200, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
-  var uusiNopeus = xPyöra-kokSpeed;
+  var uusiNopeus = xPyÃ¶ra-kokSpeed;
 
         var t1 = t_min+(uusiNopeus-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
-        //tähän vaiheen määrittely ja nopeuden lasku
+        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
         drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
         sx = sx+(auto.speed-kokSpeed);
 }
 
-function piirraPyoraLowHill(maenAlku, xPyöra) {
+function piirraPyoraLowHill(maenAlku, xPyÃ¶ra) {
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 50, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyöra-maenAlku)*inc
+        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
-        //tähän vaiheen määrittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyöra);
+        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
+        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
 }
 
-function piirraPyoraHighHill(maenAlku, xPyöra) {
+function piirraPyoraHighHill(maenAlku, xPyÃ¶ra) {
 
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 150, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyöra-maenAlku)*inc
+        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
-        //tähän vaiheen määrittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyöra);
+        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
+        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
 }
 
 function piirraVaihdemittari() {
