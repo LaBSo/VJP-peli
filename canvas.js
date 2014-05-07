@@ -13,11 +13,15 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-//LiitetÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½hemmin car luokkaan
+var oldX1 = 0;
+var oldX2 = 0;
+var oldY1 = 0;
+var oldY2 = 0;
+
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-plane = new plane("lentokone.png");
+plane = new plane("pinempiLentokone.png");
 var lentokone  = new Image();
 lentokone.src=plane.src;
 var rengas = new Image();
@@ -29,7 +33,6 @@ mittari.src = "mittari0.png";
 var watch = false;
 var startTime;
 var endTime;
-var n =0;
 
 // TODO: poista kun toiminnallisuudet kunnossa
 var TO_RADIANS = Math.PI / 180;
@@ -78,96 +81,21 @@ function animate(time) {
 	     ctx.drawImage(mittari, 540, -32);
 
 
-        if(sx+83 >= 400 && sx+83 <= 800){
-        	console.log()
-        	piirraPyoraBasicHill(400, sx+83);
+        if(sx+83+15 >= 350 && sx+83+20+23 <= 750 && sx+23+15 >= 350 && sx+23 <= 750){
+        	piirraPyoraBasicHill(350, sx+83+15, 2);
+        	piirraPyoraBasicHill(350, sx+23+15, 1);
+        } else if(sx+83+15 >= 350 && sx+83+20+23 <= 750){
+        	piirraPyoraBasicHill(350, sx+83+15, 2);
+        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
+        } else if(sx+23+15 >= 350 && sx+23+15 <= 750){
+        	piirraPyoraBasicHill(350, sx+23+15, 1);
+        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas2y, sx);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
 		    sx = sx + auto.speed;
         }
-        if(sx+13 >= 400 && sx+13 <= 800){
-        	piirraPyoraBasicHill(400, sx+13);
-        }
-
-
-
-
-
-
-//http://jsdo.it/debiru/sf3B
-
-
-//HihgHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 300, xh = 400;
-  var ox = 350, oy = 326;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 150, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-  //BasicHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 400, xh = 400;
-  var ox = 350, oy = 360;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-  //LowHill mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤rittely on tÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤ssÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¤:
-
-  /*var cw = 550, xh = 400;
-  var ox = 200, oy = 375;
-  var t_min = 0, t_max = 2*Math.PI;
-  var scale = 50, step = 200, inc = t_max/step;
-
- ctx.strokeStyle = "#565660";
-  ctx.beginPath();
-  ctx.moveTo(ox+(t_min/t_max)*cw, oy-(scale*Math.cos(t_min)));
-  for (var t=t_min; t<=t_max; t+=inc){
-    y = -scale*0.5 * Math.cos(t);
-    x = (t / t_max) * cw;
-    ctx.lineTo(ox+x, oy-y);
-  }
-  ctx.stroke();
-  ctx.closePath();*/
-
-
-
-
-		/*ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		ctx.drawImage(audi, 5, 365);
-		//ctx.drawImage(audi, 69, 325);
-		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);*/
-
-
-
-		//TODO: renkaiden pyÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½rimisnopeus
-
-		//hill1.draw();
+        
 		lastTime = time - (delta % interval);
 
 		piirraVaihdemittari();
@@ -179,11 +107,11 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyora) {
+function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 200, inc = t_max/step;
+  var scale = 80, step = 400, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
   var uusiNopeus = xPyora-kokSpeed;
 
@@ -192,35 +120,58 @@ function piirraPyoraBasicHill(maenAlku, xPyora) {
     	var x1 = (t1 / t_max) * cw;
 
 
-        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
+        if(pyoranNro == 1 ){
+        	 drawRotatedImage(rengas, 13+23, oy-y1-10,uusiNopeus);
+        } else {
+        	drawRotatedImage(rengas, 13+83+23, oy-y1-10,uusiNopeus);
+        }
+        
         sx = sx+(auto.speed-kokSpeed);
+
+        /*
+        
+        
+        if(pyoranNro == 1 ){
+        	 drawRotatedImage(rengas, 13+23, oy-y1,sx);
+        } else {
+        	drawRotatedImage(rengas, 13+83+23, oy-y1,sx);
+        }
+        for(var i=1; i<=auto.speed; i+=1){
+        	var t2 = t_min+(sx + i -maenAlku)*inc
+    	    var y2 = -scale*0.5 * Math.cos(t1);
+    	    var x2 = (t1 / t_max) * cw;
+    	    console.log(Math.sqrt(i^2+(y2-y1)^2));
+    	    console.log(auto.speed);
+        	if(Math.sqrt(i^2+(y2-y1)^2)==auto.speed){
+        		sx = sx+i;
+        		return; 
+        	}
+        }
+        
+}
+        */
 }
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
-        var t_min = 0, t_max = 2*Math.PI;
-        var scale = 50, step = 200, inc = t_max/step;
-
-        var t1 = t_min+(xPyora-maenAlku)*inc
-    	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
+        var cw = 550, xh = 400;
+       var ox = 200, oy = 375;
+       var t_min = 0, t_max = 2*Math.PI;
+       var scale = 50, step = 200, inc = t_max/step;
 
 
-        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
+        //tÃƒÂ¤hÃƒÂ¤n vaiheen mÃƒÂ¤ÃƒÂ¤rittely ja nopeuden lasku
         drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
 function piirraPyoraHighHill(maenAlku, xPyora) {
 
+  var cw = 300, xh = 400;
+  var ox = 350, oy = 326;
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 150, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyora-maenAlku)*inc
-    	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
 
-
-        //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
+        //tÃƒÂ¤hÃƒÂ¤n vaiheen mÃƒÂ¤ÃƒÂ¤rittely ja nopeuden lasku
         drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
@@ -292,7 +243,6 @@ function piirraNopeusmittari() {
 
 
 $(document).ready(function() {
-	 scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
 
 	//TODO: EventListerner
 	document.addEventListener('keydown', checkKeyDown, false);
