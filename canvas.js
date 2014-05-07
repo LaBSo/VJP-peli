@@ -13,7 +13,11 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-//LiitetÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½n myÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½hemmin car luokkaan
+var oldX1 = 0;
+var oldX2 = 0;
+var oldY1 = 0;
+var oldY2 = 0;
+
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -77,16 +81,16 @@ function animate(time) {
 	     ctx.drawImage(mittari, 540, -32);
 
 
-        if(sx+83 >= 400 && sx+83 <= 800){
+        if(sx+83+15 >= 400 && sx+83 <= 800){
         	console.log()
-        	piirraPyoraBasicHill(400, sx+83);
+        	piirraPyoraBasicHill(400, sx+83+15);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
 		    sx = sx + auto.speed;
         }
-        if(sx+13 >= 400 && sx+13 <= 800){
-        	piirraPyoraBasicHill(400, sx+13);
+        if(sx+23+15 >= 400 && sx+23 <= 800){
+        	piirraPyoraBasicHill(400, sx+23+15);
         }
 
 
@@ -178,13 +182,13 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraBasicHill(maenAlku, xPyora) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
-  var scale = 80, step = 200, inc = t_max/step;
+  var scale = 80, step = 400, inc = t_max/step;
   var kokSpeed  = auto.speed*0.7;
-  var uusiNopeus = xPyÃ¶ra-kokSpeed;
+  var uusiNopeus = xPyora-kokSpeed;
 
         var t1 = t_min+(uusiNopeus-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
@@ -196,25 +200,25 @@ function piirraPyoraBasicHill(maenAlku, xPyÃ¶ra) {
         sx = sx+(auto.speed-kokSpeed);
 }
 
-function piirraPyoraLowHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraLowHill(maenAlku, xPyora) {
         var t_min = 0, t_max = 2*Math.PI;
         var scale = 50, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
+        var t1 = t_min+(xPyora-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
+        drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
-function piirraPyoraHighHill(maenAlku, xPyÃ¶ra) {
+function piirraPyoraHighHill(maenAlku, xPyora) {
 
   var t_min = 0, t_max = 2*Math.PI;
   var scale = 150, step = 200, inc = t_max/step;
 
-        var t1 = t_min+(xPyÃ¶ra-maenAlku)*inc
+        var t1 = t_min+(xPyora-maenAlku)*inc
     	var y1 = -scale*0.5 * Math.cos(t1);
     	var x1 = (t1 / t_max) * cw;
 
