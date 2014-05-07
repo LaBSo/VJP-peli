@@ -1,5 +1,5 @@
 window.onload = function() {
-	var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
+	//var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
 };
 
 function goal (scoreRef,playerName,lapTime) {

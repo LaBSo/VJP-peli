@@ -21,7 +21,7 @@ var oldY2 = 0;
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
-plane = new plane("lentokone.png");
+plane = new plane("pinempiLentokone.png");
 var lentokone  = new Image();
 lentokone.src=plane.src;
 var rengas = new Image();
@@ -81,17 +81,19 @@ function animate(time) {
 	     ctx.drawImage(mittari, 540, -32);
 
 
-        if(sx+83+15 >= 400 && sx+83 <= 800){
-        	console.log()
-        	piirraPyoraBasicHill(400, sx+83+15);
+        if(sx+83+15 >= 400 && sx+83 <= 800 && sx+23+15 >= 400 && sx+23 <= 800){
+        	piirraPyoraBasicHill(400, sx+83+15, 2);
+        	piirraPyoraBasicHill(400, sx+23+15, 1);
+        } else if(sx+83+15 >= 400 && sx+83 <= 800){
+        	piirraPyoraBasicHill(400, sx+83+15, 2);
+        } else if(sx+23+15 >= 400 && sx+23 <= 800){
+        	piirraPyoraBasicHill(400, sx+23+15, 1);
         } else {
         	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
 		    sx = sx + auto.speed;
         }
-        if(sx+23+15 >= 400 && sx+23 <= 800){
-        	piirraPyoraBasicHill(400, sx+23+15);
-        }
+        
 
 
 
@@ -182,7 +184,7 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyora) {
+function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
   var cw = 400, xh = 400;
   var ox = 350, oy = 360;
   var t_min = 0, t_max = 2*Math.PI;
@@ -195,9 +197,36 @@ function piirraPyoraBasicHill(maenAlku, xPyora) {
     	var x1 = (t1 / t_max) * cw;
 
 
-        //for(var i=xPyora; i<=xPyora; i+=1){ }
-        drawRotatedImage(rengas, 13, oy-y1,uusiNopeus);
+        if(pyoranNro == 1 ){
+        	 drawRotatedImage(rengas, 13+23, oy-y1,uusiNopeus);
+        } else {
+        	drawRotatedImage(rengas, 13+83+23, oy-y1,uusiNopeus);
+        }
+        
         sx = sx+(auto.speed-kokSpeed);
+
+        /*
+        
+        
+        if(pyoranNro == 1 ){
+        	 drawRotatedImage(rengas, 13+23, oy-y1,sx);
+        } else {
+        	drawRotatedImage(rengas, 13+83+23, oy-y1,sx);
+        }
+        for(var i=1; i<=auto.speed; i+=1){
+        	var t2 = t_min+(sx + i -maenAlku)*inc
+    	    var y2 = -scale*0.5 * Math.cos(t1);
+    	    var x2 = (t1 / t_max) * cw;
+    	    console.log(Math.sqrt(i^2+(y2-y1)^2));
+    	    console.log(auto.speed);
+        	if(Math.sqrt(i^2+(y2-y1)^2)==auto.speed){
+        		sx = sx+i;
+        		return; 
+        	}
+        }
+        
+}
+        */
 }
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
@@ -224,7 +253,7 @@ function piirraPyoraHighHill(maenAlku, xPyora) {
 
 
         //tÃ¤hÃ¤n vaiheen mÃ¤Ã¤rittely ja nopeuden lasku
-        drawRotatedImage(rengas, x1, y1+oy,xPyÃ¶ra);
+        drawRotatedImage(rengas, x1, y1+oy,xPyora);
 }
 
 function piirraVaihdemittari() {
