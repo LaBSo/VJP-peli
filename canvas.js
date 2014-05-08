@@ -110,27 +110,27 @@ function animate(time) {
 	aniFrame = requestAnimationFrame(animate);
 }
 
-function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
-  var cw = 400 //maen leveys
-  t_max = 2*Math.PI; //kayran maksimi
-  var scale = 80, step = cw, inc = t_max/step; // scale korkeus, inc kerroin joka tulee maksimista ja kayran leveydesta
+function drawWheelOnBasicHill(hillStart, xLocWheel, wheelNro) {
+  var cw = 400 //the width of the hill
+  t_max = 2*Math.PI; 
+  var scale = 80, step = cw, inc = t_max/step; 
 
-        var t1 = (xPyora-maenAlku)*inc //xPyora on pyoran sijainti taustakuvalla, katsotaan kohta maessa
+        var t1 = (xLocWheel-hillStart)*inc 
     	var y1 = -scale*0.5 * Math.cos(t1);
-    	var x1 = (t1 / t_max) * cw;
 
-        if(pyoranNro == 1 ){ //jos etupyora
-        	 drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y-y1-45,sx);
-        } else { //jos takapyora
-        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
+        if(wheelNro == 1 ){ //backwheel
+        	 drawRotatedImage(wheel, car.wheel1x, car.wheel1y-y1-45,sx); //drawing the wheel on canvas
+        } else { //frontwheel
+        	drawRotatedImage(wheel, car.wheel2x, car.wheel2y-y1-45,sx);
         }
-                        
-        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
-        	var t2 = (xPyora + i -maenAlku)*inc
+         
+    
+       for(var i=1; i<=car.speed; i++){ //finding the next xlocation of the wheel with the same distance (on the curve) to the previous location as the speed of the car (=the distance to the new point on the flat ground)
+        	var t2 = (xLocWheel + i -hillStart)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
-    	    var x2 = (t2 / t_max) * cw;
-        	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
-        		sx = sx+i; //uusi x-koordinaatti
+
+        	if(Math.round(Math.sqrt(i^2+(y2-y1)^2))==car.speed){
+        		sx = sx+i; //the new xcoordinate
         		break; 
         	}
         }
@@ -154,11 +154,13 @@ function piirraPyoraLowHill(maenAlku, xPyora) {
         	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
         }
                         
-        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
-        	var t2 = (xPyora + i -maenAlku)*inc
+        for(var i = 0.1; i <= 100; i += 0.1){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
+        	var t2 = (xPyoray1 + i -maenAlku)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
     	    var x2 = (t2 / t_max) * cw;
-        	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
+    	    
+
+        	if(Math.sqrt(i^2+(y2-y1)^2) >= auto.speed){
         		sx = sx+i; //uusi x-koordinaatti
         		break; 
         	}
