@@ -13,9 +13,11 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
+
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
+tausta = new tausta();
 plane = new plane("pinempiLentokone.png");
 var lentokone = new Image();
 lentokone.src = plane.src;
@@ -69,7 +71,9 @@ function animate(time) {
 			smallHill = false;
 		};
 
-		ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+		tausta.drawBackground(sx);
+
 		auto.update(audi);
 		plane.update(lentokone);
 		endTime = new Date() - startTime;
