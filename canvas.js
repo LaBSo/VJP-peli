@@ -69,6 +69,11 @@ function animate(time) {
 
 	// Draw objects
 	if (delta > interval) {
+		if(sx+auto.rengas2x>= 335 && sx+auto.rengas2x <= 750){
+	smallHill =true;
+	console.log("mäki");
+}
+else {smallHill = false;};
 
 	ctx.drawImage(background,sx,sy,gameWidth,gameHeight,0,0,gameWidth,gameHeight);
 	auto.update(audi);
@@ -81,24 +86,9 @@ function animate(time) {
 	    ctx.drawImage(mittari, 540, -32);
 
         //auto kokonaan maessa
-        if(sx+auto.rengas2x >= 335 && sx+auto.rengas2x <= 750 && sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
-        	piirraPyoraBasicHill(335, sx+82, 2);
-        	piirraPyoraBasicHill(335, sx+15, 1);
-        //etupyora maessa
-        } else if(sx+auto.rengas2x>= 335 && sx+auto.rengas2x <= 750){
-        	piirraPyoraBasicHill(335, sx+82, 2);
-        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
-        //takapyora maessa
-        } else if(sx+auto.rengas1x >= 335 && sx+auto.rengas1x <= 750){
-        	piirraPyoraBasicHill(335, sx+15, 1);
-        	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-        //ei maessa
-        } else {
-        	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
-		    drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-		    sx = sx + auto.speed; // uusi nopeus
-        }
-        
+
+	sx = sx + auto.speedX;
+	sy = sy + auto.speedY;
 		lastTime = time - (delta % interval);
 
 		piirraVaihdemittari();
@@ -124,19 +114,19 @@ function piirraPyoraBasicHill(maenAlku, xPyora, pyoranNro) {
         } else { //jos takapyora
         	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
         }
-                        
-        for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
+
+        for(var i=1; i<=auto.speedX; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
         	var t2 = (xPyora + i -maenAlku)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
     	    var x2 = (t2 / t_max) * cw;
         	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
         		sx = sx+i; //uusi x-koordinaatti
-        		break; 
+        		break;
         	}
         }
-        
+
 }
-        
+
 
 function piirraPyoraLowHill(maenAlku, xPyora) {
         var cw = 550
@@ -153,14 +143,14 @@ function piirraPyoraLowHill(maenAlku, xPyora) {
         } else { //jos takapyora
         	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
         }
-                        
+
         for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
         	var t2 = (xPyora + i -maenAlku)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
     	    var x2 = (t2 / t_max) * cw;
         	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
         		sx = sx+i; //uusi x-koordinaatti
-        		break; 
+        		break;
         	}
         }
 }
@@ -180,14 +170,14 @@ function piirraPyoraHighHill(maenAlku, xPyora) {
         } else { //jos takapyora
         	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y-y1-45,sx);
         }
-                        
+
         for(var i=1; i<=auto.speed; i++){ //luuppi, jossa katsotaan seuraava piste eli kuinka paljon x-suuntaan lisätään nopeutta
         	var t2 = (xPyora + i -maenAlku)*inc
     	    var y2 = -scale*0.5 * Math.cos(t2);
     	    var x2 = (t2 / t_max) * cw;
         	if(Math.ceil(Math.sqrt(i^2+(y2-y1)^2))==auto.speed){
         		sx = sx+i; //uusi x-koordinaatti
-        		break; 
+        		break;
         	}
         }
 }

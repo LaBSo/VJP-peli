@@ -1,10 +1,12 @@
-var n =0;
+var n = 0;
+var smallHill = false;
+
 function car(src) {
-	this.speed = 0;
+	this.speedX = 0;
 	this.gear = 1;
 	this.locationx = 73;
 	this.locationy = 383;
-	this.kierrokset;
+	this.kierrokset
 	this.src = src;
 	this.topspeed = 20;
 	this.rengas1x = this.locationx - 33;
@@ -51,17 +53,22 @@ car.prototype.update = function(img) {
 	dx = this.rengas1x - this.rengas2x;
 	theta = Math.atan2(dy, dx);
 	theta *= 360 / Math.PI;
+	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
+	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
 	drawRotatedImage(img, auto.locationx, auto.locationy, theta);
 
 	// Maalinpaikka
-	if (sx >= 700 && n==0) {
+	if (sx >= 700 && n == 0) {
 		gameOver = true;
 	}
 	//Firebase muutos
-		if (gameOver) {
+	if (gameOver) {
 		goal(scoreRef, "Atte", endTime);
 		console.log("TUlee tänne");
-		n=1;
+		n = 1;
+	}
+	if (smallHill) {
+
 	}
 };
 car.prototype.brake = function() {
