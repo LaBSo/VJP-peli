@@ -6,6 +6,8 @@ function tausta(){
 	var lowWidth = 550;
 	var normalWidth = 800;
 	var groundWidth = 100;
+	this.taustantausta = new Image();
+	this.taustantausta.src = "taustantausta.png";
 
 }
 
@@ -44,5 +46,6 @@ tausta.prototype.drawGround= function(x) {
 }
 
 tausta.prototype.drawBackground = function(x){
-	
+	ctx.drawImage(this.taustantausta, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+
 }
