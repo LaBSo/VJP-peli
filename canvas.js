@@ -13,11 +13,6 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-var oldX1 = 0;
-var oldX2 = 0;
-var oldY1 = 0;
-var oldY2 = 0;
-
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -47,7 +42,7 @@ function drawRotatedImage(image, x, y, angle) {
 
 	// rotate around that point, converting our
 	// angle from degrees to radians
-	ctx.rotate(angle * TO_RADIANS);
+	ctx.rotate(angle );
 
 	// draw it up and to the left by half the width
 	// and height of the image
@@ -67,9 +62,9 @@ function animate(time) {
 	// Draw objects
 	if (delta > interval) {
 
-		if (sx + auto.rengas2x >= 335 && sx + auto.rengas2x <= 750) {
+		if (sx  >= 290 && sx  <= 800) {
 			smallHill = true;
-			console.log("mäki");
+
 		} else {
 			smallHill = false;
 		};
@@ -87,7 +82,7 @@ function animate(time) {
 		//auto kokonaan maessa
 
 		sx = sx + auto.speedX;
-		sy = sy + auto.speedY;
+
 		lastTime = time - (delta % interval);
 
 		piirraVaihdemittari();
