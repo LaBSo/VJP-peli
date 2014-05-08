@@ -1,12 +1,16 @@
+var TO_RADIANS = Math.PI / 180;
 var n = 0;
 var smallHill = false;
-
+var smallHillAngle = 29.7*TO_RADIANS;
+var alpha = 0;
 function car(src) {
+	this.speed = 0;
 	this.speedX = 0;
+	this.speedY = 0;
 	this.gear = 1;
 	this.locationx = 73;
-	this.locationy = 383;
-	this.kierrokset
+	this.locationy = 383 ;
+	this.kierrokset;
 	this.src = src;
 	this.topspeed = 20;
 	this.rengas1x = this.locationx - 33;
@@ -55,7 +59,7 @@ car.prototype.update = function(img) {
 	theta *= 360 / Math.PI;
 	drawRotatedImage(rengas, auto.rengas1x, auto.rengas1y, sx);
 	drawRotatedImage(rengas, auto.rengas2x, auto.rengas2y, sx);
-	drawRotatedImage(img, auto.locationx, auto.locationy, theta);
+	drawRotatedImage(img, auto.locationx, auto.locationy -this.speedY, theta);
 
 	// Maalinpaikka
 	if (sx >= 700 && n == 0) {
@@ -68,8 +72,14 @@ car.prototype.update = function(img) {
 		n = 1;
 	}
 	if (smallHill) {
-
+		if (sx>330 +37 && sx < 330 +226){
+		alpha= 29.7*TO_RADIANS;
+		this.speedY = - Math.sin(alpha)*this.speed;
+		}
 	}
+
+	this.speedX = auto.speed * Math.cos(alpha) ;
+	alpha = 0;
 };
 car.prototype.brake = function() {
 	/*
