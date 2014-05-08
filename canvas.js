@@ -13,10 +13,6 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-var oldX1 = 0;
-var oldX2 = 0;
-var oldY1 = 0;
-var oldY2 = 0;
 
 var audi = new Image();
 audi.src = "audiR8auto.png";
