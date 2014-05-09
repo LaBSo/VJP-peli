@@ -31,7 +31,16 @@ var watch = false;
 var startTime;
 var endTime;
 
+var ohjeet = new Image();
+ohjeet.src = "alkuOhje.png";
+var alkuKuva = new Image();
+alkuKuva.src = "ohjeTeksti.png";
+var ohjeetAuki = false;
+var alkuKuvaAuki = true;
+
 // TODO: poista kun toiminnallisuudet kunnossa
+
+
 
 function drawRotatedImage(image, x, y, angle) {
 
@@ -169,9 +178,10 @@ $(document).ready(function() {
 	document.addEventListener('keyup', checkKeyUp, false);
 	// Start animation
 	if (requestAnimationFrame) {
-		aniFrame = requestAnimationFrame(animate);
+		newGame();
 	}
 });
+
 function checkKeyDown(e) {
 	var keyID = (e.keyCode) ? e.keyCode : e.which;
 	if (keyID === 38 ) {//up arrow or W key
@@ -212,4 +222,29 @@ function checkKeyUp(e) {
 	if (keyID === 37 ) {//left arrow or A key
 		e.preventDefault();
 	}
+}
+
+$(document).click(function(event) {
+    if(alkuKuvaAuki){
+    	alkuKuvaAuki = false;
+    	ohjeetAuki = true;
+    	newGame();
+    } else if(ohjeetAuki){
+    	ohjeetAuki = false;
+    	aniFrame = requestAnimationFrame(animate);
+    }
+    
+});
+
+function newGame() {
+
+	if(alkuKuvaAuki){
+		console.log("alkukuva");
+		ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+	}
+	if(ohjeetAuki){
+		console.log("ohjeet");
+		ctx.drawImage(ohjeet, 1, 1, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+	}
+	
 }
