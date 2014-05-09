@@ -117,6 +117,6 @@ car.prototype.brake = function() {
 	if (this.speed > 0) {
 		this.speed = this.speed - 1;
 	} else {
-		this.speed = -1;
+		this.speed = -3;
 	}
 };
