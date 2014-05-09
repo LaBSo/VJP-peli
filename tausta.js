@@ -30,7 +30,7 @@ tausta.prototype.drawHigh= function(x) {
 }
  
 tausta.prototype.drawLow= function(x) {
-   ctx.drawImage(this.img, 0, 1500, 550, gameHeight, newX, 0, 550, gameHeight);
+   ctx.drawImage(this.img, 0, 1500, 550, gameHeight, x, 0, 550, gameHeight);
 }
  
 tausta.prototype.drawGround= function(x) {
@@ -42,13 +42,28 @@ tausta.prototype.drawBackground = function(x){
        
         for(var i=0; i < basicHills.length; i++){
                 var miinustus = this.properX(Math.round(x));
-                if((x+800>= basicHills[i] && x<=basicHills[i])){
+                if((x+799>= basicHills[i] && x<basicHills[i])){
                     var newX = this.properX(basicHills[i]-miinustus);
                     this.drawBasic(newX);                   
-        } else if(x> basicHills[i]-this.basicWidth && x>basicHills[i]){
-                    this.drawBasic(-miinustus);               
-        }  else {
-          return;
+                } else if(x<= basicHills[i]+this.basicWidth && x>=basicHills[i]){
+                    var erotus = this.properX(basicHills[i]);
+                    this.drawBasic(-miinustus+erotus);               
+                }  else {
+                    return;
+                }
         }
+        for(var i=0; i < lowHills.length; i++){
+                var miinustus = this.properX(Math.round(x));
+                if((x+799>= lowHills[i] && x<lowHills[i])){
+                    var newX = this.properX(lowHills[i]-miinustus);
+                    this.drawLow(newX); 
+                    console.log(newX);                  
+                } else if(x<= lowHills[i]+this.lowWidth && x>=lowHills[i]){
+                    console.log(-miinustus);
+                    var erotus = this.properX(lowHills[i]);
+                    this.drawLow(-miinustus+erotus);               
+                }  else {
+                    return;
+                }
         }
 }
