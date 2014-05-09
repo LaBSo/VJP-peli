@@ -68,7 +68,7 @@ car.prototype.update = function(img) {
 	}
 	if (smallHill) {
 
-		if (sx > 300 + 10  && sx < 240 + 226+ 10) {
+		if (sx > 300 + 40  && sx < 240 + 226+ 10) {
 			this.rengas1Alpha = 29.7 * TO_RADIANS;
 		}
 		if (sx > 240 + 226+ 10 && sx < 290 + 264 + 10) {
@@ -98,10 +98,10 @@ car.prototype.update = function(img) {
 	this.speedY = -Math.sin(alpha) * this.speed;
 	this.rengas2y = this.rengas2y -Math.sin(this.rengas2Alpha) * this.speed;
 	this.rengas1y = this.rengas1y -Math.sin(this.rengas1Alpha) * this.speed;
-	 this.rengas2x = this.rengas2x - this.speedX + this.speed * Math.cos(this.rengas2Alpha);
-	 this.rengas1x = this.rengas1x - this.speedX + this.speed * Math.cos(this.rengas1Alpha);
+	this.rengas2x = this.rengas2x - this.speedX + this.speed * Math.cos(this.rengas2Alpha);
+	this.rengas1x = this.rengas1x - this.speedX + this.speed * Math.cos(this.rengas1Alpha);
 	this.locationy = (this.rengas2y+this.rengas1y)/2 - 9;
-
+	this.locationx = (this.rengas2x) - 33;
 
 	drawRotatedImage(rengas, this.rengas2x, this.rengas2y, sx);
 	drawRotatedImage(rengas, this.rengas1x, this.rengas1y, sx);

@@ -85,7 +85,7 @@ function animate(time) {
 
 		//auto kokonaan maessa
 
-		sx = sx + auto.speedX;
+		sx = sx + auto.speedX + auto.speed * Math.cos(auto.rengas1Alpha);
 
 		lastTime = time - (delta % interval);
 
