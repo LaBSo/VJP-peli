@@ -7,8 +7,6 @@ var elapsedTime;
 var lastTime = 0;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-var background = new Image();
-background.src = 'taustaa3.png';
 var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
@@ -239,11 +237,9 @@ $(document).click(function(event) {
 function newGame() {
 
 	if(alkuKuvaAuki){
-		console.log("alkukuva");
 		ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
 	if(ohjeetAuki){
-		console.log("ohjeet");
 		ctx.drawImage(ohjeet, 1, 1, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
 	

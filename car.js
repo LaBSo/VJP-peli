@@ -155,6 +155,7 @@ car.prototype.update = function(img) {
 	this.rengas1Alpha = 0;
 	this.rengas2Alpha = 0;
 	alpha = 0;
+}
 };
 car.prototype.brake = function() {
 	/*
