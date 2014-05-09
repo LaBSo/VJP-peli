@@ -65,7 +65,8 @@ car.prototype.update = function(img) {
 
 		console.log(basicHills[basicHillindex]);
 	}
-	console.log(basicHills[basicHillindex]);
+	console.log(lowHills[smallHillindex]);
+	console.log(sx);
 
 	//Firebase muutos
 	if (gameOver) {
@@ -82,7 +83,7 @@ car.prototype.update = function(img) {
 		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;
 		}
-		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + +236 - 100 + 148 + 80) {
+		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex]  +236 - 100 + 148 + 80) {
 			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
 
 		}
@@ -104,38 +105,40 @@ car.prototype.update = function(img) {
 			this.rengas1y = 383 + 9;
 			this.rengas2y = 383 + 9;
 		}
+	}
 		if (smallHill) {
 
-		if (sx > smallHills[smallHillindex] - 22 && sx < smallHills[smallHillindex] + 170 - 100 + 67) {
-			this.rengas1Alpha = 29.7 * TO_RADIANS;
-			console.log("tissit");
-		}
-		if (sx > smallHills[smallHillindex] + 170 - 100 + 67 && sx < smallHills[smallHillindex] + 236 + 10 + 67) {
-			this.rengas1Alpha = 0;
-		}
-		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + +236 - 100 + 148 + 80) {
-			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
+			if (sx > lowHills[smallHillindex] - 37 && sx < lowHills[smallHillindex] + 226 + 37) {
+				this.rengas1Alpha = 13.9 * TO_RADIANS;
 
-		}
-		if (sx > smallHills[smallHillindex] - 80 && sx < smallHills[smallHillindex] + 170 - 100) {
-			this.rengas2Alpha = 29.7 * TO_RADIANS;
-		}
-		if (sx > smallHills[smallHillindex] + 170 - 100 && sx < smallHills[smallHillindex] + 236 - 100) {
-			this.rengas2Alpha = 0;
-		}
-		if (sx > smallHills[smallHillindex] + 236 - 100 && sx < smallHills[smallHillindex] + 236 - 100 + 148) {
-			this.rengas2Alpha = (360 - 29.7) * TO_RADIANS;
+			}
+			if (sx > lowHills[smallHillindex] +226 - 37 && sx < lowHills[smallHillindex] +306 + 37) {
+				this.rengas1Alpha = 0;
+			}
+			if (sx > lowHills[smallHillindex]+ 306 - 37 && sx < lowHills[smallHillindex] + 306 + 179 + 80) {
+				this.rengas1Alpha = (360 - 13.9) * TO_RADIANS;
 
+			}
+			if (sx > lowHills[smallHillindex] - 80 && sx < lowHills[smallHillindex] + 170 - 100) {
+				this.rengas2Alpha = 13.9 * TO_RADIANS;
+			}
+			if (sx > lowHills[smallHillindex] + 170 - 100 && sx < lowHills[smallHillindex] + 236 - 100) {
+				this.rengas2Alpha = 0;
+			}
+			if (sx > lowHills[smallHillindex] + 236 - 100 && sx < lowHills[smallHillindex] + 236 - 100 + 148) {
+				this.rengas2Alpha = (360 - 13.9) * TO_RADIANS;
+
+			}
+			if (sx > lowHills[smallHillindex] +500 ) {
+				smallHillindex++;
+				smallHill = false;
+				this.rengas1x = 73 - 33;
+				this.rengas2x = 73 + 33;
+				this.rengas1y = 383 + 9;
+				this.rengas2y = 383 + 9;
+			}
 		}
-		if (sx > smallHills[smallHillindex] + 400 - 33) {
-			smallHillindex++;
-			smallHill = false;
-			this.rengas1x = 73 - 33;
-			this.rengas2x = 73 + 33;
-			this.rengas1y = 383 + 9;
-			this.rengas2y = 383 + 9;
-		}
-	}
+
 	dy = this.rengas1y - this.rengas2y;
 	dx = this.rengas1x - this.rengas2x;
 	theta = Math.atan2(dy, dx);
@@ -155,6 +158,7 @@ car.prototype.update = function(img) {
 	this.rengas1Alpha = 0;
 	this.rengas2Alpha = 0;
 	alpha = 0;
+
 };
 car.prototype.brake = function() {
 	/*

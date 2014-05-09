@@ -1,4 +1,4 @@
-var fps = 48;
+var fps = 24;
 var interval = 1000 / fps;
 var delta;
 var k = 0;
