@@ -44,12 +44,11 @@ tausta.prototype.drawBackground = function(x){
                 var miinustus = this.properX(Math.round(x));
                 if((x+800>= basicHills[i] && x<=basicHills[i])){
                     var newX = this.properX(basicHills[i]-miinustus);
-                    this.drawBasic(newX);
-        } else if(x>= basicHills[i]-this.basicWidth && x>basicHills[i]){
-                    this.drawBasic(-miinustus);
-        } else {
-               
-                return;
+                    this.drawBasic(newX);                   
+        } else if(x> basicHills[i]-this.basicWidth && x>basicHills[i]){
+                    this.drawBasic(-miinustus);               
+        }  else {
+          return;
         }
         }
 }

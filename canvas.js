@@ -71,8 +71,8 @@ function animate(time) {
 			smallHill = false;
 		};
 
-		ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		// tausta.drawBackground(sx);
+		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+		tausta.drawBackground(sx);
 
 		auto.update(audi);
 		plane.update(lentokone);
