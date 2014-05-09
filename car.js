@@ -2,6 +2,10 @@ var TO_RADIANS = Math.PI / 180;
 var n = 0;
 var smallHill = false;
 var smallHillAngle = 29.7 * TO_RADIANS;
+var smallHillindex = 0;
+var basicHill = false;
+var basicHillindex = 0;
+var basicHillAngle = 29.7 * TO_RADIANS;
 var alpha = 0;
 function car(src) {
 	this.speed = 0;
@@ -13,7 +17,7 @@ function car(src) {
 	this.kierrokset = 0;
 	this.src = src;
 	this.topspeed = 20;
-	this.rengas1x = 73 -33;
+	this.rengas1x = 73 - 33;
 	this.rengas2x = 73 + 33;
 	this.rengas1y = 383 + 9;
 	this.rengas2y = 383 + 9;
@@ -55,60 +59,99 @@ car.prototype.changeGear = function(side) {
 car.prototype.update = function(img) {
 	var gameOver = false;
 
-
-
 	// Maalinpaikka
 	if (sx >= 700 && n == 0) {
 		gameOver = true;
 
-		console.log("TextBox");
+		console.log(basicHills[basicHillindex]);
 	}
+	console.log(basicHills[basicHillindex]);
+
 	//Firebase muutos
 	if (gameOver) {
 		goal(scoreRef, "Atte", endTime);
-				n = 1;
-					$("#textBox" ).show();
+		n = 1;
+		$("#textBox").show();
 	}
-	if (smallHill) {
+	if (basicHill) {
 
-		if (sx > 300 + 40  && sx < 240 + 226+ 10) {
+		if (sx > basicHills[basicHillindex] - 22 && sx < basicHills[basicHillindex] + 170 - 100 + 67) {
 			this.rengas1Alpha = 29.7 * TO_RADIANS;
+			console.log("tissit");
 		}
-		if (sx > 240 + 226+ 10 && sx < 290 + 264 + 10) {
+		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;
 		}
-		if (sx > 290 + 264+ 10 && sx < 700+ 10) {
+		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + +236 - 100 + 148 + 80) {
 			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
 
 		}
-		if (sx > 300  - 10 && sx < 240 + 226- 10) {
+		if (sx > basicHills[basicHillindex] - 80 && sx < basicHills[basicHillindex] + 170 - 100) {
 			this.rengas2Alpha = 29.7 * TO_RADIANS;
 		}
-		if (sx > 240 + 226-33 && sx < 290 + 264-33) {
+		if (sx > basicHills[basicHillindex] + 170 - 100 && sx < basicHills[basicHillindex] + 236 - 100) {
 			this.rengas2Alpha = 0;
 		}
-		if (sx > 290 + 264-33 && sx < 700-33) {
-		this.rengas2Alpha= (360 - 29.7) * TO_RADIANS;
+		if (sx > basicHills[basicHillindex] + 236 - 100 && sx < basicHills[basicHillindex] + 236 - 100 + 148) {
+			this.rengas2Alpha = (360 - 29.7) * TO_RADIANS;
 
 		}
+		if (sx > basicHills[basicHillindex] + 400 - 33) {
+			basicHillindex++;
+			basicHill = false;
+			this.rengas1x = 73 - 33;
+			this.rengas2x = 73 + 33;
+			this.rengas1y = 383 + 9;
+			this.rengas2y = 383 + 9;
+		}
+		if (smallHill) {
 
+		if (sx > smallHills[smallHillindex] - 22 && sx < smallHills[smallHillindex] + 170 - 100 + 67) {
+			this.rengas1Alpha = 29.7 * TO_RADIANS;
+			console.log("tissit");
+		}
+		if (sx > smallHills[smallHillindex] + 170 - 100 + 67 && sx < smallHills[smallHillindex] + 236 + 10 + 67) {
+			this.rengas1Alpha = 0;
+		}
+		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + +236 - 100 + 148 + 80) {
+			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
+
+		}
+		if (sx > smallHills[smallHillindex] - 80 && sx < smallHills[smallHillindex] + 170 - 100) {
+			this.rengas2Alpha = 29.7 * TO_RADIANS;
+		}
+		if (sx > smallHills[smallHillindex] + 170 - 100 && sx < smallHills[smallHillindex] + 236 - 100) {
+			this.rengas2Alpha = 0;
+		}
+		if (sx > smallHills[smallHillindex] + 236 - 100 && sx < smallHills[smallHillindex] + 236 - 100 + 148) {
+			this.rengas2Alpha = (360 - 29.7) * TO_RADIANS;
+
+		}
+		if (sx > smallHills[smallHillindex] + 400 - 33) {
+			smallHillindex++;
+			smallHill = false;
+			this.rengas1x = 73 - 33;
+			this.rengas2x = 73 + 33;
+			this.rengas1y = 383 + 9;
+			this.rengas2y = 383 + 9;
+		}
 	}
 	dy = this.rengas1y - this.rengas2y;
 	dx = this.rengas1x - this.rengas2x;
 	theta = Math.atan2(dy, dx);
 	//theta *= 360 / Math.PI;
-	this.speedX = this.speed * Math.cos(alpha);
+	this.speedX = this.speed * Math.cos(this.rengas2Alpha);
 	this.speedY = -Math.sin(alpha) * this.speed;
-	this.rengas2y = this.rengas2y -Math.sin(this.rengas2Alpha) * this.speed;
-	this.rengas1y = this.rengas1y -Math.sin(this.rengas1Alpha) * this.speed;
+	this.rengas2y = this.rengas2y - Math.sin(this.rengas2Alpha) * this.speed;
+	this.rengas1y = this.rengas1y - Math.sin(this.rengas1Alpha) * this.speed;
 	this.rengas2x = this.rengas2x - this.speedX + this.speed * Math.cos(this.rengas2Alpha);
 	this.rengas1x = this.rengas1x - this.speedX + this.speed * Math.cos(this.rengas1Alpha);
-	this.locationy = (this.rengas2y+this.rengas1y)/2 - 9;
+	this.locationy = (this.rengas2y + this.rengas1y) / 2 - 9;
 	this.locationx = (this.rengas2x) - 33;
 
 	drawRotatedImage(rengas, this.rengas2x, this.rengas2y, sx);
 	drawRotatedImage(rengas, this.rengas1x, this.rengas1y, sx);
-	drawRotatedImage(img, this.locationx, this.locationy, Math.PI+theta);
+	drawRotatedImage(img, this.locationx, this.locationy, Math.PI + theta);
 	this.rengas1Alpha = 0;
 	this.rengas2Alpha = 0;
 	alpha = 0;

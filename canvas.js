@@ -1,4 +1,4 @@
-var fps = 24;
+var fps = 48;
 var interval = 1000 / fps;
 var delta;
 var k = 0;
@@ -64,12 +64,7 @@ function animate(time) {
 	// Draw objects
 	if (delta > interval) {
 
-		if (sx  >= 290 && sx  <= 800) {
-			smallHill = true;
 
-		} else {
-			smallHill = false;
-		};
 
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 		tausta.drawBackground(sx);
@@ -85,7 +80,7 @@ function animate(time) {
 
 		//auto kokonaan maessa
 
-		sx = sx + auto.speedX + auto.speed * Math.cos(auto.rengas1Alpha);
+		sx = sx + auto.speedX ;
 
 		lastTime = time - (delta % interval);
 
