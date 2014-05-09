@@ -262,11 +262,11 @@ $(document).ready(function() {
 });
 function checkKeyDown(e) {
 	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
+	if (keyID === 38 ) {//up arrow or W key
 		e.preventDefault();
 		auto.changeGear('up');
 	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
+	if (keyID === 39 	) {//right arrow or D key
 		e.preventDefault();
 		auto.accelerate();
 		if (watch == false) {
@@ -275,11 +275,11 @@ function checkKeyDown(e) {
 			watch = true;
 		}
 	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
+	if (keyID === 40 ) {//down arrow or S key
 		e.preventDefault();
 		auto.changeGear('down');
 	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
+	if (keyID === 37 ) {//left arrow or A key
 		e.preventDefault();
 		auto.brake();
 	}
@@ -287,17 +287,17 @@ function checkKeyDown(e) {
 
 function checkKeyUp(e) {
 	var keyID = (e.keyCode) ? e.keyCode : e.which;
-	if (keyID === 38 || keyID === 87) {//up arrow or W key
+	if (keyID === 38 ) {//up arrow or W key
 		e.preventDefault();
 	}
-	if (keyID === 39 || keyID === 68) {//right arrow or D key
+	if (keyID === 39 ) {//right arrow or D key
 		e.preventDefault();
 
 	}
-	if (keyID === 40 || keyID === 83) {//down arrow or S key
+	if (keyID === 40 ) {//down arrow or S key
 		e.preventDefault();
 	}
-	if (keyID === 37 || keyID === 65) {//left arrow or A key
+	if (keyID === 37 ) {//left arrow or A key
 		e.preventDefault();
 	}
 }

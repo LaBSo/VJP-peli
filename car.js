@@ -60,11 +60,14 @@ car.prototype.update = function(img) {
 	// Maalinpaikka
 	if (sx >= 700 && n == 0) {
 		gameOver = true;
+
+		console.log("TextBox");
 	}
 	//Firebase muutos
 	if (gameOver) {
 		goal(scoreRef, "Atte", endTime);
-		n = 1;
+				n = 1;
+					$("#textBox" ).show();
 	}
 	if (smallHill) {
 
