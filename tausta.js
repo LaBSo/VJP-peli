@@ -62,8 +62,6 @@ tausta.prototype.drawBackground = function(x){
                 } else if(x<= lowHills[i]+this.lowWidth && x>=lowHills[i]){
                     var erotus = x-lowHills[i];
                     this.drawLow(-erotus);
-
-
                 }
         }
         for(var i=0; i < grounds.length; i++){ //long grounds
