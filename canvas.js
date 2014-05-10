@@ -11,7 +11,6 @@ var gameHeight = c.height;
 var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
-
 var audi = new Image();
 audi.src = "audiR8auto.png";
 auto = new car("audiR8auto.png");
@@ -28,7 +27,6 @@ mittari.src = "mittari0.png";
 var watch = false;
 var startTime;
 var endTime;
-
 var ohjeet = new Image();
 ohjeet.src = "alkuOhje.png";
 var alkuKuva = new Image();
@@ -67,7 +65,10 @@ function drawRotatedImage(image, x, y, angle) {
 function animate(time) {
 	// Calculate time elapsed from the last tick (time-based motion)
 	delta = time - lastTime;
-
+	if(ohjeetAuki || alkuKuvaAuki){
+	newGame();
+	}
+	else{
 	// Draw objects
 	if (delta > interval) {
 
@@ -95,7 +96,7 @@ function animate(time) {
 		piirraNopeusmittari();
 
 	}
-
+	}
 	// Continue animation loop
 	aniFrame = requestAnimationFrame(animate);
 }
@@ -176,7 +177,7 @@ $(document).ready(function() {
 	document.addEventListener('keyup', checkKeyUp, false);
 	// Start animation
 	if (requestAnimationFrame) {
-		newGame();
+		aniFrame = requestAnimationFrame(animate);
 	}
 });
 
@@ -226,21 +227,21 @@ $(document).click(function(event) {
     if(alkuKuvaAuki){
     	alkuKuvaAuki = false;
     	ohjeetAuki = true;
-    	newGame();
+
     } else if(ohjeetAuki){
     	ohjeetAuki = false;
     	aniFrame = requestAnimationFrame(animate);
     }
-    
+
 });
 
 function newGame() {
 
 	if(alkuKuvaAuki){
-		ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
 	if(ohjeetAuki){
 		ctx.drawImage(ohjeet, 1, 1, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
-	
+
 }
