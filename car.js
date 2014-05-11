@@ -65,10 +65,9 @@ car.prototype.update = function(img) {
 	if (sx >= 700 && n == 0) {
 		gameOver = true;
 
-		console.log(basicHills[basicHillindex]);
+
 	}
-	console.log(lowHills[smallHillindex]);
-	console.log(sx);
+
 
 	//Firebase muutos
 	if (gameOver) {
@@ -80,7 +79,7 @@ car.prototype.update = function(img) {
 
 		if (sx > basicHills[basicHillindex] - 22 && sx < basicHills[basicHillindex] + 170 - 100 + 67) {
 			this.rengas1Alpha = 29.7 * TO_RADIANS;
-			console.log("tissit");
+
 		}
 		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;

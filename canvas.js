@@ -34,6 +34,7 @@ alkuKuva.src = "ohjeTeksti.png";
 var ohjeetAuki = false;
 var alkuKuvaAuki = true;
 
+
 // TODO: poista kun toiminnallisuudet kunnossa
 
 
@@ -72,8 +73,10 @@ function animate(time) {
 	// Draw objects
 	if (delta > interval) {
 
+		if (sx > 2000 && sx < 2040){
+		var maali = goal(scoreRef,"jussi",0);
 
-
+		}
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 		tausta.drawBackground(sx);
 
@@ -238,7 +241,7 @@ $(document).click(function(event) {
 function newGame() {
 
 	if(alkuKuvaAuki){
-ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+	ctx.drawImage(alkuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
 	if(ohjeetAuki){
 		ctx.drawImage(ohjeet, 1, 1, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
