@@ -54,12 +54,8 @@ tausta.prototype.drawBackground = function(x){
                     this.drawBasic(newX);
                     basicHill = true;
                 } else if(x<= basicHills[i]+this.basicWidth && x>=basicHills[i]){
-                    if(auto.speed <=20){
                         var erotus = x-basicHills[i];
                         this.drawBasic(-erotus);
-                    } else {
-                        isOver = true;
-                    }
                 }            
         }
 
@@ -70,12 +66,9 @@ tausta.prototype.drawBackground = function(x){
                 this.drawLow(newX);
                 smallHill = true;
             } else if(x<= lowHills[i]+this.lowWidth && x>=lowHills[i]){
-                if(auto.speed <= 30){
+                
                     var erotus = x-lowHills[i];
                     this.drawLow(-erotus);
-                } else {
-                    isOver = true;
-                }
             }
                 
         }

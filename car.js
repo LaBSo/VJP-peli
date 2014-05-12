@@ -81,13 +81,21 @@ car.prototype.update = function(img) {
 
 		if (sx > basicHills[basicHillindex] - 22 && sx < basicHills[basicHillindex] + 170 - 100 + 67) {
 			this.rengas1Alpha = 29.7 * TO_RADIANS;
+			if(auto.speed > 0 ){
+				auto.speed = auto.speed-1;
+			}
 
+			
 		}
 		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;
+			if(auto.speed >= 20){
+				isOver = true;
+			}
 		}
 		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + 236 - 100 + 148 + 80) {
 			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
+			auto.speed = auto.speed + 1;
 
 		}
 		if (sx > basicHills[basicHillindex] - 80 && sx < basicHills[basicHillindex] + 170 - 100) {
@@ -113,13 +121,20 @@ car.prototype.update = function(img) {
 
 		if (sx > lowHills[smallHillindex] - 20 && sx < lowHills[smallHillindex] + 226 + 20) {
 			this.rengas1Alpha = 13.9 * TO_RADIANS;
+			if(auto.speed > 0 ){
+				auto.speed = auto.speed-0.5;
+			}
 
 		}
 		if (sx > lowHills[smallHillindex] + 226 - 20 && sx < lowHills[smallHillindex] + 306 + 20) {
 			this.rengas1Alpha = 0;
+			if(auto.speed >= 30){
+				isOver = true;
+			}
 		}
 		if (sx > lowHills[smallHillindex] + 306 - 20 && sx < lowHills[smallHillindex] + 306 + 179 + 80) {
 			this.rengas1Alpha = (360 - 13.9) * TO_RADIANS;
+			auto.speed = auto.speed + 0.5;
 
 		}
 		if (sx > lowHills[smallHillindex] - 80 && sx < lowHills[smallHillindex] + 226 - 100) {

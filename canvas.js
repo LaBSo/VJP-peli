@@ -145,6 +145,7 @@ function piirraVaihdemittari() {
 	} else if (auto.gear == 1.6) {
 		vaihdekuva.src = "vaihde3.png";
 	} else if (auto.gear == 1.9) {
+		console.log("vaihde4");
 		vaihdekuva.src = "vaihde4.png";
 	} else if (auto.gear == 2.2) {
 		vaihdekuva.src = "vaihde5.png";
@@ -156,47 +157,47 @@ function piirraVaihdemittari() {
 function piirraNopeusmittari() {
 	if (auto.speed == 0) {
 		mittari.src = "mittari0.png";
-	} else if (auto.speed <= 3) {
+	} else if (auto.speed <= 1) {
 		mittari.src = "mittari1.png";
-	} else if (auto.speed <= 5) {
+	} else if (auto.speed <= 3) {
 		mittari.src = "mittari2.png";
-	} else if (auto.speed <= 8) {
+	} else if (auto.speed <= 5) {
 		mittari.src = "mittari3.png";
-	} else if (auto.speed <= 10) {
+	} else if (auto.speed <= 7) {
 		mittari.src = "mittari4.png";
-	} else if (auto.speed <= 13) {
+	} else if (auto.speed <= 9) {
 		mittari.src = "mittari5.png";
-	} else if (auto.speed <= 15) {
+	} else if (auto.speed <= 11) {
 		mittari.src = "mittari6.png";
-	} else if (auto.speed <= 18) {
+	} else if (auto.speed <= 13) {
 		mittari.src = "mittari7.png";
-	} else if (auto.speed <= 20) {
+	} else if (auto.speed <= 15) {
 		mittari.src = "mittari8.png";
-	} else if (auto.speed <= 23) {
+	} else if (auto.speed <= 17) {
 		mittari.src = "mittari9.png";
-	} else if (auto.speed <= 25) {
+	} else if (auto.speed <= 19) {
 		mittari.src = "mittari10.png";
-	} else if (auto.speed <= 28) {
+	} else if (auto.speed <= 21) {
 		mittari.src = "mittari11.png";
-	} else if (auto.speed <= 30) {
+	} else if (auto.speed <= 23) {
 		mittari.src = "mittari12.png";
-	} else if (auto.speed <= 33) {
+	} else if (auto.speed <= 25) {
 		mittari.src = "mittari13.png";
-	} else if (auto.speed <= 35) {
+	} else if (auto.speed <= 27) {
 		mittari.src = "mittari14.png";
-	} else if (auto.speed <= 38) {
+	} else if (auto.speed <= 29) {
 		mittari.src = "mittari15.png";
-	} else if (auto.speed <= 40) {
+	} else if (auto.speed <= 31) {
 		mittari.src = "mittari16.png";
-	} else if (auto.speed <= 43) {
+	} else if (auto.speed <= 33) {
 		mittari.src = "mittari17.png";
-	} else if (auto.speed <= 45) {
+	} else if (auto.speed <= 35) {
 		mittari.src = "mittari18.png";
-	} else if (auto.speed <= 48) {
+	} else if (auto.speed <= 37) {
 		mittari.src = "mittari19.png";
-	} else if (auto.speed <= 50) {
+	} else if (auto.speed <= 39) {
 		mittari.src = "mittari20.png";
-	} else if (auto.speed <= 60) {
+	} else if (auto.speed <= 41) {
 		mittari.src = "mittari21.png";
 	}
 
