@@ -84,10 +84,7 @@ function animate(time) {
 
 		}
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		if(sx >=11800){
-			loppu = true;
-			console.log("lopussa");
-		}
+		
 
 		if(!isOver){
 			tausta.drawBackground(sx);
@@ -101,13 +98,18 @@ function animate(time) {
 			ctx.drawImage(mittari, 540, -32);
 			sx = sx + auto.speedX ;
 
+			if(sx >=11800){
+			isGoal = true;
+			console.log("lopussa");
+			}
+
 			lastTime = time - (delta % interval);
 
 			piirraVaihdemittari();
 			piirraNopeusmittari();
 		} else {
-			if(loppu){
-				ctx.drawImage(loppuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+			if(isGoal){
+				ctx.drawImage(loppu, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 				goal();
 			} else {
 				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
