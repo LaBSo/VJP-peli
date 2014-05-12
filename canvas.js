@@ -33,7 +33,12 @@ var alkuKuva = new Image();
 alkuKuva.src = "ohjeTeksti.png";
 var ohjeetAuki = false;
 var alkuKuvaAuki = true;
-
+var isOver = false;
+var isGoal = false;
+var valiKuolema = new Image();
+valiKuolema.src = "tieltasuistuminen.png";
+var loppu = new Image();
+loppu.src = "loppuKuva.png";
 
 // TODO: poista kun toiminnallisuudet kunnossa
 
@@ -78,25 +83,35 @@ function animate(time) {
 
 		}
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		tausta.drawBackground(sx);
+		if(sx >=11800){
+			loppu = true;
+			console.log("lopussa");
+		}
 
-		auto.update(audi);
-		plane.update(lentokone);
-		endTime = new Date() - startTime;
-		ctx.font = "20px Georgia";
-		ctx.fillText(auto.speed, 10, 50);
-		ctx.fillText(endTime, 10, 80);
-		ctx.drawImage(vaihdekuva, 695, 5);
-		ctx.drawImage(mittari, 540, -32);
+		if(!isOver){
+			tausta.drawBackground(sx);
+			auto.update(audi);
+			plane.update(lentokone);
+			endTime = new Date() - startTime;
+			ctx.font = "20px Georgia";
+			ctx.fillText(auto.speed, 10, 50);
+			ctx.fillText(endTime, 10, 80);
+			ctx.drawImage(vaihdekuva, 695, 5);
+			ctx.drawImage(mittari, 540, -32);
+			sx = sx + auto.speedX ;
 
-		//auto kokonaan maessa
+			lastTime = time - (delta % interval);
 
-		sx = sx + auto.speedX ;
-
-		lastTime = time - (delta % interval);
-
-		piirraVaihdemittari();
-		piirraNopeusmittari();
+			piirraVaihdemittari();
+			piirraNopeusmittari();
+		} else {
+			if(loppu){
+				ctx.drawImage(loppuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+			} else {
+				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+			}
+		}
+				
 
 	}
 	}

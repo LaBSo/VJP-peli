@@ -42,27 +42,36 @@ tausta.prototype.drawBackground = function(x){
 
         for(var i=0; i < basicHills.length; i++){ //basicHills
                 var miinustus = this.properX(Math.round(x));
+                
                 if((x+799>= basicHills[i] && x<basicHills[i])){
                     var newX = this.properX(basicHills[i]-miinustus);
                     this.drawBasic(newX);
                     basicHill = true;
                 } else if(x<= basicHills[i]+this.basicWidth && x>=basicHills[i]){
-                    var erotus = x-basicHills[i];
-                    this.drawBasic(-erotus);
-
-
-                }
+                    if(auto.speed <=20){
+                        var erotus = x-basicHills[i];
+                        this.drawBasic(-erotus);
+                    } else {
+                        isOver = true;
+                    }
+                }            
         }
+
         for(var i=0; i < lowHills.length; i++){ //lowHills
                 var miinustus = this.properX(Math.round(x));
-                if((x+799>= lowHills[i] && x<lowHills[i])){
-                    var newX = this.properX(lowHills[i]-miinustus);
-                    this.drawLow(newX);
-                    smallHill = true;
-                } else if(x<= lowHills[i]+this.lowWidth && x>=lowHills[i]){
+            if((x+799>= lowHills[i] && x<lowHills[i])){
+                var newX = this.properX(lowHills[i]-miinustus);
+                this.drawLow(newX);
+                smallHill = true;
+            } else if(x<= lowHills[i]+this.lowWidth && x>=lowHills[i]){
+                if(auto.speed <= 30){
                     var erotus = x-lowHills[i];
                     this.drawLow(-erotus);
+                } else {
+                    isOver = true;
                 }
+            }
+                
         }
         for(var i=0; i < grounds.length; i++){ //long grounds
                 var miinustus = this.properX(Math.round(x));
