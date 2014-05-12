@@ -39,6 +39,14 @@ var valiKuolema = new Image();
 valiKuolema.src = "tieltasuistuminen.png";
 var loppu = new Image();
 loppu.src = "loppuKuva.png";
+var music = new Audio();
+music.src = "venkoilu30s.mp3";
+music.volume = 0.1;
+var succesfullyLoaded = false;
+
+music.addEventListener("canplaythrough", function(event){
+    succesfullyLoaded = true;
+})
 
 
 // TODO: poista kun toiminnallisuudet kunnossa
@@ -87,6 +95,7 @@ function animate(time) {
 		
 
 		if(!isOver){
+			music.play();
 			tausta.drawBackground(sx);
 			auto.update(audi);
 			plane.update(lentokone);
@@ -109,6 +118,7 @@ function animate(time) {
 			piirraVaihdemittari();
 			piirraNopeusmittari();
 		} else {
+			music.pause();
 			if(isGoal){
 				ctx.drawImage(loppu, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 				goal();
