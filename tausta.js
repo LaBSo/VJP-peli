@@ -39,6 +39,10 @@ tausta.prototype.drawGround= function(x) {
    ctx.drawImage(this.img, 0, 0, gameWidth, gameHeight, x, 0, gameWidth, gameHeight);
 };
 
+tausta.prototype.drawGoal = function(x) {
+   ctx.drawImage(this.maali, 0, 0, gameWidth, gameHeight, x, 0, gameWidth, gameHeight);
+};
+
 tausta.prototype.drawBackground = function(x){
         ctx.drawImage(this.taustantausta, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 
@@ -95,14 +99,15 @@ tausta.prototype.drawBackground = function(x){
                     this.drawShort(-erotus);
                 }
         }
-        for(var i=0; i < highHills.length; i++){ //short grounds
-                var miinustus = this.properX(Math.round(x));
-                if((x+799>= highHills[i] && x<highHills[i])){
-                    var newX = this.properX(highHills[i]-miinustus);
-                    this.drawHigh(newX);
-                } else if(x<= highHills[i]+this.highWidth && x>=highHills[i]){
-                    var erotus = x-highHills[i];
-                    this.drawHigh(-erotus);
-                }
+        
+
+        if((x+799>= 11800 && x<11800)){
+            var miinustus = this.properX(Math.round(x));
+            var newX = this.properX(11800-miinustus);
+            this.drawGoal(newX);
+        } else if(x<= 11800+this.groundWidth && x>=11800){
+            var erotus = x-11800;
+            this.drawGoal(-erotus);
         }
+
 };
