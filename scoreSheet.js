@@ -4,15 +4,15 @@ function goal (scoreRef,playerName,lapTime) {
 	var priority = 1000/lapTime;
 	var playerScoreRef = scoreRef.child(playerName);
 	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, priority);
-
-    var newScoreRow = $("<tr/>");
+	var tulokset;
 	var index = 0;
 	scoreList = playerScoreRef.endAt().limit(10);
 	scoreList.once('value', function(data) {
-		data.forEach(function(topEntry) {
-			 newScoreRow.append($("<td/>").append($("<em/>").text(data.val().name)));
-    		 newScoreRow.append($("<td/>").text(data.val().score));
-  });
+			data.forEach(function() {
+			ctx.fillText(data.val().name, 350-index*25, 250);
+			ctx.fillText(data.val().score, 380 -index*25, 250);
+  			index++;
+
  });
- 	  $("#leaderboardTable").append(newScoreRow);
+ 	  // $("#leaderboardTable").append(newScoreRow);
 };
