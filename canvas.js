@@ -80,11 +80,11 @@ function animate(time) {
 	if (delta > interval) {
 
 		if (sx > 2000 && sx < 2040){
-		var maali = goal(scoreRef,"jussi",0);
+		var maali = goal(scoreRef,"jussi",25);
 
 		}
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-		
+
 
 		if(!isOver){
 			tausta.drawBackground(sx);
@@ -115,7 +115,7 @@ function animate(time) {
 				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 			}
 		}
-				
+
 
 	}
 	}

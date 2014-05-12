@@ -1,13 +1,14 @@
 var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
-function goal (scoreRef,playerName,lapTime) {
 
+function goal (scoreRef,playerName,lapTime) {
+	var priority = 1000;
 	var playerScoreRef = scoreRef.child(playerName);
-	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, lapTime);
+	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, priority/lapTime);
 
     var newScoreRow = $("<tr/>");
-
-	scoreFive = playerScoreRef.endAt().limit(5);
-	scoreFive.once('value', function(data) {
+	var index = 0;
+	scoreList = playerScoreRef.endAt().limit(10);
+	scoreList.once('value', function(data) {
 		data.forEach(function(topEntry) {
 			 newScoreRow.append($("<td/>").append($("<em/>").text(data.val().name)));
     		 newScoreRow.append($("<td/>").text(data.val().score));
