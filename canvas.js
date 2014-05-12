@@ -88,10 +88,7 @@ function animate(time) {
 	// Draw objects
 	if (delta > interval) {
 
-		if (sx > 2000 && sx < 2040){
-		var maali = goal(scoreRef,"jussi",25);
 
-		}
 		//ctx.drawImage(background, sx, sy, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 
 
@@ -120,9 +117,10 @@ function animate(time) {
 			piirraNopeusmittari();
 		} else {
 			music.pause();
-			if(isGoal){
+			if(isGoal && k == 0){
 				ctx.drawImage(loppu, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
-				goal();
+				goal(scoreRef,playerName,endTime);
+				k =1;
 			} else {
 				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 			}

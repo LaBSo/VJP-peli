@@ -1,9 +1,9 @@
 var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
 
 function goal (scoreRef,playerName,lapTime) {
-	var priority = 1000;
+	var priority = 1000/lapTime;
 	var playerScoreRef = scoreRef.child(playerName);
-	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, priority/lapTime);
+	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, priority);
 
     var newScoreRow = $("<tr/>");
 	var index = 0;

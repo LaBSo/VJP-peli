@@ -63,20 +63,7 @@ car.prototype.changeGear = function(side) {
 car.prototype.update = function(img) {
 	var gameOver = false;
 
-	// Maalinpaikka
-	if (sx >= 700 && n == 0) {
-		gameOver = true;
 
-
-	}
-
-
-	//Firebase muutos
-	if (gameOver) {
-		goal(scoreRef, playerName, endTime);
-		n = 1;
-		$("#textBox").show();
-	}
 	if (basicHill) {
 
 		if (sx > basicHills[basicHillindex] - 22 && sx < basicHills[basicHillindex] + 170 - 100 + 67) {
@@ -85,7 +72,7 @@ car.prototype.update = function(img) {
 				auto.speed = auto.speed-1;
 			}
 
-			
+
 		}
 		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;
@@ -195,7 +182,7 @@ car.prototype.brake = function() {
 				this.minspeed = 10 * (this.gear-0.3);
 			if (this.speed > this.minspeed) {
 				this.speed = this.speed - 1;
-			} 
+			}
 		} else {
 			this.speed = -3;
 		}
