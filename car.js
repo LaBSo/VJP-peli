@@ -50,13 +50,9 @@ car.prototype.changeGear = function(side) {
 		case 'up':
 			this.gear = this.gear + 0.3;
 			break;
-
 		case 'down':
 			this.gear = this.gear - 0.3;
 			break;
-		/*
-		 * Vaihteen vaihtaminen
-		 */
 	}
 
 };
