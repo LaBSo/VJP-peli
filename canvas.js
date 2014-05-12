@@ -100,6 +100,7 @@ function animate(time) {
 
 			if(sx >=11800){
 			isGoal = true;
+			isOver = true;
 			console.log("lopussa");
 			}
 
