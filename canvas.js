@@ -264,9 +264,7 @@ $(document).click(function(event) {
     } else if(ohjeetAuki){
     	ohjeetAuki = false;
     	aniFrame = requestAnimationFrame(animate);
-    } else {
-    	startOver();
-    }
+    } 
 
 });
 
@@ -279,30 +277,4 @@ function newGame() {
 		ctx.drawImage(ohjeet, 1, 1, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 	}
 
-}
-
-function startOver() {
-	sx = 0;
-	isGoal = false;
-	isOver = false;
-	startTime = new Date();
-	auto.speed = 0;
-	auto.gear = 1;
-
-	auto.speedX = 0;
-	auto.speedY = 0;
-	auto.locationx = 73;
-	auto.locationy = 383;
-	auto.topspeed = 20;
-	auto.rengas1x = 73 - 33;
-	auto.rengas2x = 73 + 33;
-	auto.rengas1y = 383 + 9;
-	auto.rengas2y = 383 + 9;
-	auto.rengas1Alpha = 0;
-	auto.rengas2Alpha = 0;
-	smallHill = false;
-	basicHill = false;
-	plane.speed = 0;
-    plane.locationx = -80;
-    plane.locationy = -20;
 }
