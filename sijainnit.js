@@ -1,5 +1,5 @@
-var basicHills = [800,3300,3800,4300];
-var lowHills = [1400, 1950];
-var shortGrounds = [1200, 1300,3700,4200];
-var highHills = [4700];
-var grounds = [0, 2500];
+var basicHills = [800,3300,3800,4300, 6050,7000, 8150, 9350];
+var lowHills = [1400, 1950, 5500, 6450, 7600,9750];
+var shortGrounds = [1200, 1300,3700, 4200, 7400, 7500];
+var highHills = [];
+var grounds = [0, 2500, 4700, 8550, 10300, 11100];
