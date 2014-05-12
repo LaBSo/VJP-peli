@@ -15,6 +15,7 @@ function car(src) {
 	this.locationx = 73;
 	this.locationy = 383;
 	this.kierrokset = 0;
+	this.minspeed = -3;
 	this.src = src;
 	this.topspeed = 20;
 	this.rengas1x = 73 - 33;
@@ -34,7 +35,8 @@ car.prototype.accelerate = function() {
 			this.gear = 1;
 		if (this.gear > 2.6)
 			this.gear = 2.5;
-		this.topspeed = 20 * this.gear;
+		this.topspeed = 10 * this.gear;
+		this.minspeed = 10 * (this.gear-0.3)
 		if (this.speed < this.topspeed) {
 			this.speed = this.speed + 1;
 		} else {
@@ -71,7 +73,7 @@ car.prototype.update = function(img) {
 
 	//Firebase muutos
 	if (gameOver) {
-		goal(scoreRef, "Atte", endTime);
+		goal(scoreRef, playerName, endTime);
 		n = 1;
 		$("#textBox").show();
 	}
@@ -79,13 +81,21 @@ car.prototype.update = function(img) {
 
 		if (sx > basicHills[basicHillindex] - 22 && sx < basicHills[basicHillindex] + 170 - 100 + 67) {
 			this.rengas1Alpha = 29.7 * TO_RADIANS;
+			if(auto.speed > 0 ){
+				auto.speed = auto.speed-1;
+			}
 
+			
 		}
 		if (sx > basicHills[basicHillindex] + 170 - 100 + 67 && sx < basicHills[basicHillindex] + 236 + 10 + 67) {
 			this.rengas1Alpha = 0;
+			if(auto.speed >= 20){
+				isOver = true;
+			}
 		}
 		if (sx > basicHills[basicHillindex] + 236 - 100 + 67 && sx < basicHills[basicHillindex] + 236 - 100 + 148 + 80) {
 			this.rengas1Alpha = (360 - 29.7) * TO_RADIANS;
+			auto.speed = auto.speed + 1;
 
 		}
 		if (sx > basicHills[basicHillindex] - 80 && sx < basicHills[basicHillindex] + 170 - 100) {
@@ -111,13 +121,20 @@ car.prototype.update = function(img) {
 
 		if (sx > lowHills[smallHillindex] - 20 && sx < lowHills[smallHillindex] + 226 + 20) {
 			this.rengas1Alpha = 13.9 * TO_RADIANS;
+			if(auto.speed > 0 ){
+				auto.speed = auto.speed-0.5;
+			}
 
 		}
 		if (sx > lowHills[smallHillindex] + 226 - 20 && sx < lowHills[smallHillindex] + 306 + 20) {
 			this.rengas1Alpha = 0;
+			if(auto.speed >= 30){
+				isOver = true;
+			}
 		}
 		if (sx > lowHills[smallHillindex] + 306 - 20 && sx < lowHills[smallHillindex] + 306 + 179 + 80) {
 			this.rengas1Alpha = (360 - 13.9) * TO_RADIANS;
+			auto.speed = auto.speed + 0.5;
 
 		}
 		if (sx > lowHills[smallHillindex] - 80 && sx < lowHills[smallHillindex] + 226 - 100) {
@@ -170,7 +187,15 @@ car.prototype.brake = function() {
 	 */
 	if (!ohjeetAuki && !alkuKuvaAuki) {
 		if (this.speed > 0) {
-			this.speed = this.speed - 1;
+			if (this.gear < 1)
+				this.gear = 1;
+			if (this.gear > 2.6)
+				this.gear = 2.5;
+				this.topspeed = 10 * this.gear;
+				this.minspeed = 10 * (this.gear-0.3);
+			if (this.speed > this.minspeed) {
+				this.speed = this.speed - 1;
+			} 
 		} else {
 			this.speed = -3;
 		}

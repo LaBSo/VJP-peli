@@ -16,7 +16,7 @@ plane.prototype.update = function(img) {
 	}
 	else this.speed =this.topspeed;
 	}
-	if(auto.speed > 3){
+	if(auto.speed > 18){
 		this.locationx = this.locationx - 1;
 	}
 	else{
