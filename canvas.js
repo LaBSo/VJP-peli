@@ -99,7 +99,7 @@ function animate(time) {
 			plane.update(lentokone);
 			endTime = new Date() - startTime;
 			ctx.font = "20px Georgia";
-			ctx.fillText(auto.speed, 10, 50);
+			ctx.fillText(auto.gear, 10, 50);
 			ctx.fillText(endTime, 10, 80);
 			ctx.drawImage(vaihdekuva, 695, 5);
 			ctx.drawImage(mittari, 540, -32);
@@ -139,8 +139,7 @@ function piirraVaihdemittari() {
 		vaihdekuva.src = "vaihde2.png";
 	} else if (auto.gear == 1.6) {
 		vaihdekuva.src = "vaihde3.png";
-	} else if (auto.gear == 1.9) {
-		console.log("vaihde4");
+	} else if (auto.gear == 1.9000000000000001) {
 		vaihdekuva.src = "vaihde4.png";
 	} else if (auto.gear == 2.2) {
 		vaihdekuva.src = "vaihde5.png";
@@ -292,7 +291,7 @@ function startOver() {
 	sx = 0;
 	isGoal = false;
 	isOver = false;
-	startTime = Date();
+	startTime = new Date();
 	auto.speed = 0;
 	auto.gear = 1;
 
