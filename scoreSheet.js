@@ -15,4 +15,5 @@ function goal (scoreRef,playerName,lapTime) {
 
  });
  	  // $("#leaderboardTable").append(newScoreRow);
-};
+});
+}

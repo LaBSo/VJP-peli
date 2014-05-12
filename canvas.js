@@ -12,46 +12,41 @@ var gameWidth = c.width;
 var sx = 0;
 var sy = 0;
 var audi = new Image();
-audi.src = "audiR8auto.png";
-auto = new car("audiR8auto.png");
 tausta = new tausta();
-plane = new plane("pinempiLentokone.png");
 var lentokone = new Image();
-lentokone.src = plane.src;
 var rengas = new Image();
-rengas.src = "audiR8pyora.png";
 var vaihdekuva = new Image();
-vaihdekuva.src = "vaihde1.png";
 var mittari = new Image();
-mittari.src = "mittari0.png";
 var watch = false;
 var startTime;
 var endTime;
 var ohjeet = new Image();
-ohjeet.src = "alkuOhje.png";
 var alkuKuva = new Image();
-alkuKuva.src = "ohjeTeksti.png";
 var ohjeetAuki = false;
 var alkuKuvaAuki = true;
 var isOver = false;
 var isGoal = false;
 var valiKuolema = new Image();
-valiKuolema.src = "tieltasuistuminen.png";
 var loppu = new Image();
-loppu.src = "loppuKuva.png";
 var music = new Audio();
-music.src = "venkoilu30s.mp3";
 music.volume = 0.1;
-var succesfullyLoaded = false;
 var playerName;
 
-music.addEventListener("canplaythrough", function(event){
-    succesfullyLoaded = true;
-})
 
-
-// TODO: poista kun toiminnallisuudet kunnossa
-
+window.onload = function() {
+	ohjeet.src = "alkuOhje.PNG";
+	alkuKuva.src = "ohjeTeksti.PNG";
+	audi.src = "audiR8auto.png";
+	auto = new car("audiR8auto.png");
+	plane = new plane("pinempiLentokone.png");
+	lentokone.src = plane.src;
+	rengas.src = "audiR8pyora.png";
+	vaihdekuva.src = "vaihde1.png";
+	mittari.src = "mittari0.png";
+	valiKuolema.src = "tieltasuistuminen.PNG";
+	loppu.src = "loppuKuva.PNG";
+	music.src = "venkoilu30s.mp3";
+}
 
 
 function drawRotatedImage(image, x, y, angle) {
@@ -99,8 +94,7 @@ function animate(time) {
 			plane.update(lentokone);
 			endTime = new Date() - startTime;
 			ctx.font = "20px Georgia";
-			ctx.fillText(auto.gear, 10, 50);
-			ctx.fillText(endTime, 10, 80);
+			ctx.fillText(endTime, 10, 20);
 			ctx.drawImage(vaihdekuva, 695, 5);
 			ctx.drawImage(mittari, 540, -32);
 			sx = sx + auto.speedX ;
