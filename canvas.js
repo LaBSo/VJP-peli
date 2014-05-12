@@ -40,6 +40,7 @@ valiKuolema.src = "tieltasuistuminen.png";
 var loppu = new Image();
 loppu.src = "loppuKuva.png";
 
+
 // TODO: poista kun toiminnallisuudet kunnossa
 
 
@@ -107,6 +108,7 @@ function animate(time) {
 		} else {
 			if(loppu){
 				ctx.drawImage(loppuKuva, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+				goal();
 			} else {
 				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 			}

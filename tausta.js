@@ -8,6 +8,8 @@ function tausta(){
         this.groundWidth = 100;
         this.taustantausta = new Image();
         this.taustantausta.src = "taustantausta.png";
+        this.maali = new Image();
+        this.maali.src = "maali.png"
 
 }
 
