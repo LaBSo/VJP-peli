@@ -99,13 +99,14 @@ function animate(time) {
 			plane.update(lentokone);
 			endTime = new Date() - startTime;
 			ctx.font = "20px Georgia";
+			ctx.fillStyle = 'white';
 			ctx.fillText(auto.speed, 10, 50);
 			ctx.fillText(endTime, 10, 80);
 			ctx.drawImage(vaihdekuva, 695, 5);
 			ctx.drawImage(mittari, 540, -32);
 			sx = sx + auto.speedX ;
 
-			if(sx >=11800){
+			if(sx >=800){
 			isGoal = true;
 			isOver = true;
 			console.log("lopussa");
@@ -117,12 +118,12 @@ function animate(time) {
 			piirraNopeusmittari();
 		} else {
 			music.pause();
-			if(isGoal && k == 0){
+			if(isGoal ){
 				ctx.drawImage(loppu, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 				goal(scoreRef,playerName,endTime);
 				k =1;
 			} else {
-				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
+				// ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 			}
 		}
 
