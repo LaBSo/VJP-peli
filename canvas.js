@@ -43,6 +43,7 @@ var music = new Audio();
 music.src = "venkoilu30s.mp3";
 music.volume = 0.1;
 var succesfullyLoaded = false;
+var playerName;
 
 music.addEventListener("canplaythrough", function(event){
     succesfullyLoaded = true;
@@ -256,10 +257,20 @@ function checkKeyUp(e) {
 	}
 }
 
+function askName() {
+	var person = window.prompt("Anna nimesi.", "");
+    	if (person!=""){
+  			playerName = person;
+  		} else {
+  			askName();
+  		}
+}
+
 $(document).click(function(event) {
     if(alkuKuvaAuki){
     	alkuKuvaAuki = false;
     	ohjeetAuki = true;
+    	askName();
 
     } else if(ohjeetAuki){
     	ohjeetAuki = false;
