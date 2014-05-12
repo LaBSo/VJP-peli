@@ -1,18 +1,29 @@
-var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
-
-function goal (scoreRef,playerName,lapTime) {
-	var priority = 1000/lapTime;
-	var playerScoreRef = scoreRef.child(playerName);
-	playerScoreRef.setWithPriority({name : playerName, score : lapTime}, priority);
+function goal(scoreRef, playerName, lapTime) {
+	var priority = 1000 / lapTime;
+	var newScoreRow = $("<tr/>");
+	var htmlForPath = {};
+	scoreRefscoreList.setWithPriority({
+		name : playerName,
+		score : lapTime
+	}, priority);
 	var tulokset;
 	var index = 0;
-	scoreList = playerScoreRef.endAt().limit(10);
-	scoreList.once('value', function(data) {
-			data.forEach(function() {
-			ctx.fillText(data.val().name, 350-index*25, 250);
-			ctx.fillText(data.val().score, 380 -index*25, 250);
-  			index++;
+	scoreList = scoreRef.endAt().limit(10).once("value", function(snap) {
+		var i = 0;
+		snap.forEach(function(userSnap) {
 
- });
- 	  // $("#leaderboardTable").append(newScoreRow);
+			console.log('name %s is in position %d with %d points', snap.name(), i++, snap.val());
+			newScoreRow.append($("<td/>").append($("<em/>").text(snap.val().name)));
+			newScoreRow.append($("<td/>").text(snap.val().score));
+
+		$("#leaderboardTable").append(newScoreRow);
+		});
+	});
+
+
+    // Insert the new score in the appropriate place in the table.
+
+
+
+
 };

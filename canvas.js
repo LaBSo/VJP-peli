@@ -2,6 +2,7 @@ var fps = 24;
 var interval = 1000 / fps;
 var delta;
 var k = 0;
+var scoreRef = new Firebase('https://vjp-peli.firebaseio.com/');
 var aniFrame;
 var elapsedTime;
 var lastTime = 0;
@@ -44,7 +45,7 @@ music.src = "venkoilu30s.mp3";
 music.volume = 0.1;
 var succesfullyLoaded = false;
 var playerName;
-
+var noWard =0;
 music.addEventListener("canplaythrough", function(event){
     succesfullyLoaded = true;
 })
@@ -115,9 +116,10 @@ function animate(time) {
 			piirraNopeusmittari();
 		} else {
 			music.pause();
-			if(isGoal){
+			if(isGoal && noWard===0){
 				ctx.drawImage(loppu, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 				goal(scoreRef,playerName,endTime);
+				noWard =1;
 			} else {
 				ctx.drawImage(valiKuolema, 0, 0, gameWidth, gameHeight, 0, 0, gameWidth, gameHeight);
 			}
